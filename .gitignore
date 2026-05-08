@@ -1,0 +1,15 @@
+node_modules
+dist
+dist-ssr
+.env
+.env.local
+.DS_Store
+*.log
+.vite
+content/
+*.zip
+
+public/assets/**/*.mp4
+public/assets/**/*.mov
+public/assets/**/*.m4v
+public/assets/**/*.webm
