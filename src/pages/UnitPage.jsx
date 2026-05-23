@@ -173,8 +173,12 @@ export default function UnitPage() {
 
         <section className="unit-section">
           <h2>📺 Video lesson</h2>
-          {unit.videoUrl ? (
-            <VideoLesson videoUrl={unit.videoUrl} title={unit.title} />
+          {(unit.youtubeUrl || unit.videoUrl) ? (
+            <VideoLesson
+              youtubeUrl={unit.youtubeUrl}
+              videoUrl={unit.videoUrl}
+              title={unit.title}
+            />
           ) : (
             <div className="video-coming-soon">
               <span className="video-coming-soon__icon">🎬</span>

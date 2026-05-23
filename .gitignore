@@ -13,3 +13,16 @@ public/assets/**/*.mp4
 public/assets/**/*.mov
 public/assets/**/*.m4v
 public/assets/**/*.webm
+
+content/**/*.mp4
+content/**/*.mov
+content/**/*.m4v
+content/**/*.webm
+public/assets/**/*.mp4
+public/assets/**/*.mov
+public/assets/**/*.m4v
+public/assets/**/*.webm
+docs/**/*.mp4
+docs/**/*.mov
+docs/**/*.m4v
+docs/**/*.webm

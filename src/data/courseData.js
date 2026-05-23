@@ -88,7 +88,8 @@ export const units = [
     description:
       'A high-level overview of the green economy, the difference between linear and circular models, and the three pillars of sustainability — applied through realistic SME scenarios.',
     estimatedTime: '15–20 min',
-    videoUrl: '/assets/module-1/unit-1-1/video.mp4',
+    videoUrl: null,
+    youtubeUrl: "https://youtu.be/FzFZNhFe2CE",
     videoStatus: 'available',
     materials: [],
     lessonNotes: [
@@ -155,6 +156,7 @@ export const units = [
       'Recognise circular vs linear practices, self-position your SME on a Reactive → Strategic → Mature readiness scale, and sort barriers from enablers.',
     estimatedTime: '15–20 min',
     videoUrl: null,
+    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
     materials: [],
     lessonNotes: [
@@ -189,7 +191,8 @@ export const units = [
     description:
       'Recognise green entrepreneurial actions in a realistic SME case (EcoPrint Solutions) and reflect on how innovation ecosystems support green initiatives.',
     estimatedTime: '20–25 min',
-    videoUrl: '/assets/module-1/unit-1-3/video.mp4',
+    videoUrl: null,
+    youtubeUrl: "https://youtu.be/kOpzAcfpWYY",
     videoStatus: 'available',
     materials: [],
     lessonNotes: [
@@ -225,6 +228,7 @@ export const units = [
       'Take on the role of an SME decision-maker and use the quiz to design a digital sustainability plan: priority → tool → responsible practice → impact.',
     estimatedTime: '15–20 min',
     videoUrl: null,
+    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
     materials: [],
     lessonNotes: [
@@ -303,6 +307,7 @@ export const units = [
       'Tick the green-skill areas where you feel improvement is needed in your organisation. The result is a personal Skills Readiness Snapshot.',
     estimatedTime: '15–20 min',
     videoUrl: null,
+    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
     materials: [],
     lessonNotes: [
@@ -338,6 +343,7 @@ export const units = [
       'Recognise that green skills apply to all roles. The activity is a 10-question knowledge check covering definitions, role-based green skills, and SME barriers.',
     estimatedTime: '20–25 min',
     videoUrl: null,
+    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
     materials: [],
     lessonNotes: [
@@ -464,6 +470,7 @@ export const units = [
       'Diagnose why a real SME sustainability initiative failed and design a simple accountability structure.',
     estimatedTime: '20–25 min',
     videoUrl: null,
+    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
     materials: [],
     lessonNotes: [
@@ -498,7 +505,8 @@ export const units = [
     description:
       'Run a quick self-audit of everyday workplace habits across energy, waste, materials and behaviour — then identify your top quick wins.',
     estimatedTime: '15–20 min',
-    videoUrl: '/assets/module-2/unit-2-3/video.mp4',
+    videoUrl: null,
+    youtubeUrl: "https://youtu.be/R9izCctFiak",
     videoStatus: 'available',
     materials: [],
     lessonNotes: [
@@ -534,7 +542,8 @@ export const units = [
     description:
       'Why we don’t always do what we know is right — analyse the GreenTech Solutions failed energy decision through the behavioural lens.',
     estimatedTime: '20–25 min',
-    videoUrl: '/assets/module-2/unit-2-4/video.mp4',
+    videoUrl: null,
+    youtubeUrl: "https://youtu.be/pMYkJijED2E",
     videoStatus: 'available',
     materials: [],
     lessonNotes: [
@@ -570,6 +579,7 @@ export const units = [
       'The Module 2 capstone — draft your own Green Action Plan with title, owner, KPI, deadline and priority for one realistic improvement.',
     estimatedTime: '30–40 min',
     videoUrl: null,
+    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
     materials: [],
     lessonNotes: [
@@ -596,6 +606,7 @@ export const units = [
       'Read 8 SWOT-framed SME signals and choose the most strategic response to each. Best answers reflect strategic integration over short-term reaction.',
     estimatedTime: '30–35 min',
     videoUrl: null,
+    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
     materials: [],
     lessonNotes: [
@@ -726,6 +737,7 @@ export const units = [
       'Act as sustainability consultant for a Southern European food manufacturing SME. Diagnose the governance structure and propose realistic interventions.',
     estimatedTime: '35–45 min',
     videoUrl: null,
+    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
     materials: [
       { title: 'Governance — visual map (PNG)', type: 'IMAGE', url: '/assets/module-3/unit-3-2/infographic.png' }
@@ -765,6 +777,7 @@ export const units = [
       'Analyse 8 SME scenarios across sectors and identify the most realistic circular business-model strategy for each.',
     estimatedTime: '30–35 min',
     videoUrl: null,
+    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
     materials: [],
     lessonNotes: [
@@ -879,6 +892,7 @@ export const units = [
       'Apply the Social Circular Business Model Canvas to a 12-employee lifestyle design brand. Reframe value proposition, activities and partnerships.',
     estimatedTime: '30–40 min',
     videoUrl: null,
+    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
     materials: [],
     lessonNotes: [
@@ -915,6 +929,7 @@ export const units = [
       'A 10-question knowledge check on CSRD, double materiality, EU Taxonomy, ISO 14001 and strategic navigation of the sustainability ecosystem.',
     estimatedTime: '25–30 min',
     videoUrl: null,
+    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
     materials: [
       { title: 'Regulatory landscape — visual map (PNG)', type: 'IMAGE', url: '/assets/module-3/unit-3-5/infographic.png' }
@@ -1056,7 +1071,8 @@ export const units = [
     description:
       'A short knowledge check on resource efficiency basics — what it means, why it’s both environmental and business, and where to start.',
     estimatedTime: '10–15 min',
-    videoUrl: '/assets/module-4/unit-4-1/video.mp4',
+    videoUrl: null,
+    youtubeUrl: "https://youtu.be/Cg-KOSZB5oM",
     videoStatus: 'available',
     materials: [
       { title: 'Learning material — Resource efficiency in SMEs', type: 'PDF', url: '/assets/module-4/unit-4-1/learning-material.pdf' }
@@ -1144,6 +1160,7 @@ export const units = [
       'Run a 12-item energy efficiency self-audit across lighting, equipment, heating/cooling and behaviour. The unticked items are your quick wins.',
     estimatedTime: '15–20 min',
     videoUrl: null,
+    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
     materials: [
       { title: 'Learning material — Energy efficiency basics', type: 'PDF', url: '/assets/module-4/unit-4-2/learning-material.pdf' },
@@ -1184,7 +1201,8 @@ export const units = [
     description:
       'A short quiz on the basics of carbon awareness — the energy-carbon link, why awareness beats perfection, and where SMEs should start.',
     estimatedTime: '10–15 min',
-    videoUrl: '/assets/module-4/unit-4-3/video.mp4',
+    videoUrl: null,
+    youtubeUrl: "https://youtu.be/ig4hazGi9kM",
     videoStatus: 'available',
     materials: [],
     lessonNotes: [
@@ -1245,7 +1263,8 @@ export const units = [
     description:
       'A quick quiz on water efficiency: why it matters beyond the environment, the right first step, and the four water-related business risks.',
     estimatedTime: '10–15 min',
-    videoUrl: '/assets/module-4/unit-4-4/video.mp4',
+    videoUrl: null,
+    youtubeUrl: "https://youtu.be/fepiL-47boE",
     videoStatus: 'available',
     materials: [],
     lessonNotes: [
@@ -1306,6 +1325,7 @@ export const units = [
       'A quick quiz on the principle that simple, consistent monitoring beats complex one-off measurement.',
     estimatedTime: '10–15 min',
     videoUrl: null,
+    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
     materials: [],
     lessonNotes: [
@@ -1368,6 +1388,7 @@ export const units = [
       'Pick one process from your work and turn it into a circular redesign action — INPUT → USE → OUTPUT, plus the change and its business case.',
     estimatedTime: '20–25 min',
     videoUrl: null,
+    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
     materials: [],
     lessonNotes: [
@@ -1401,6 +1422,7 @@ export const units = [
       'A 5-question reflection that walks you through an eco-design audit of one product across durability, reparability, materials and waste.',
     estimatedTime: '20–25 min',
     videoUrl: null,
+    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
     materials: [],
     lessonNotes: [
@@ -1432,6 +1454,7 @@ export const units = [
       'Compare two packaging suppliers in a real SME case and write a reasoned, criteria-based decision.',
     estimatedTime: '20–25 min',
     videoUrl: null,
+    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
     materials: [],
     lessonNotes: [
@@ -1467,6 +1490,7 @@ export const units = [
       'Audit ONE logistics activity and propose a specific improvement — connecting environmental impact, cost and operational efficiency.',
     estimatedTime: '20–25 min',
     videoUrl: null,
+    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
     materials: [],
     lessonNotes: [
@@ -1499,6 +1523,7 @@ export const units = [
     description: 'Map one circular collaboration with a real partner — making sure both sides benefit.',
     estimatedTime: '20–25 min',
     videoUrl: null,
+    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
     materials: [],
     lessonNotes: [
@@ -1533,6 +1558,7 @@ export const units = [
       'Map one of your existing digital tools to a sustainability use — using what you already own, not buying new software.',
     estimatedTime: '20–25 min',
     videoUrl: null,
+    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
     materials: [],
     lessonNotes: [
@@ -1565,6 +1591,7 @@ export const units = [
       'A reflection on how SMEs can responsibly use AI and data to support sustainability decisions. Source materials are still being finalised by the CREDIT consortium.',
     estimatedTime: '15–20 min',
     videoUrl: null,
+    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
     materials: [],
     lessonNotes: [
@@ -1594,6 +1621,7 @@ export const units = [
       'A reflection that audits your "invisible" dependencies on nature — even office businesses depend on natural systems.',
     estimatedTime: '20–25 min',
     videoUrl: null,
+    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
     materials: [],
     lessonNotes: [
@@ -1625,6 +1653,7 @@ export const units = [
       'Build the structure of your first one-page sustainability report — short summary, 3–5 key indicators, and 2–3 main messages.',
     estimatedTime: '25–30 min',
     videoUrl: null,
+    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
     materials: [],
     lessonNotes: [
@@ -1658,6 +1687,7 @@ export const units = [
       'Rewrite three classic vague claims using the CLEAR + SPECIFIC + EVIDENCE test, then your own current claim.',
     estimatedTime: '20–25 min',
     videoUrl: null,
+    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
     materials: [],
     lessonNotes: [
