@@ -32,12 +32,14 @@ export default function UnitPage() {
   const [activityResult, setActivityResult] = useState(null);
   const [savingComplete, setSavingComplete] = useState(false);
   const [feedback, setFeedback] = useState('');
+  const [progressLoaded, setProgressLoaded] = useState(false);
 
   useEffect(() => {
     if (!currentUser || !unit) return;
     setActivityResult(null);
     setProgress(null);
     setFeedback('');
+    setProgressLoaded(false);
     (async () => {
       try {
         const ref = doc(db, 'users', currentUser.uid, 'progress', unit.id);
@@ -49,6 +51,8 @@ export default function UnitPage() {
         }
       } catch (err) {
         console.error(err);
+      } finally {
+        setProgressLoaded(true);
       }
     })();
   }, [currentUser, unit?.id]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -121,7 +125,7 @@ export default function UnitPage() {
   };
 
   const renderActivity = () => {
-    const common = { unit, initialResult: activityResult, onSubmit: handleActivitySubmit };
+    const common = { key: unit.id, unit, initialResult: activityResult, onSubmit: handleActivitySubmit };
     switch (unit.activityType) {
       case 'multiple-choice': return <MultipleChoiceActivity {...common} />;
       case 'checklist': return <ChecklistActivity {...common} />;
@@ -220,7 +224,11 @@ export default function UnitPage() {
         <section className="unit-section">
           <h2>🧩 Activity — {unit.activityTitle}</h2>
           {unit.activityDescription && <p className="muted">{unit.activityDescription}</p>}
-          <div className="activity-wrapper">{renderActivity()}</div>
+          <div className="activity-wrapper">
+            {progressLoaded ? renderActivity() : (
+              <p className="muted">Loading activity…</p>
+            )}
+          </div>
         </section>
 
         <section className="unit-section unit-section--complete">
