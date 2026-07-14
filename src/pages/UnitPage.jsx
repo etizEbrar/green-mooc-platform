@@ -177,9 +177,10 @@ export default function UnitPage() {
 
         <section className="unit-section">
           <h2>📺 Video lesson</h2>
-          {(unit.youtubeUrl || unit.videoUrl) ? (
+          {(unit.youtubeUrl || unit.videoUrl || unit.youtubeUrlTr) ? (
             <VideoLesson
               youtubeUrl={unit.youtubeUrl}
+              youtubeUrlTr={unit.youtubeUrlTr}
               videoUrl={unit.videoUrl}
               title={unit.title}
             />

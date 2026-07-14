@@ -1073,6 +1073,7 @@ export const units = [
     estimatedTime: '10–15 min',
     videoUrl: null,
     youtubeUrl: "https://youtu.be/Cg-KOSZB5oM",
+    youtubeUrlTr: "https://youtu.be/ENu5ia89p3Q",
     videoStatus: 'available',
     materials: [
       { title: 'Learning material — Resource efficiency in SMEs', type: 'PDF', url: '/assets/module-4/unit-4-1/learning-material.pdf' }

@@ -11,14 +11,33 @@
 // is expected to render the "video coming soon" card instead.
 import { useEffect, useState } from 'react';
 
-export default function VideoLesson({ youtubeUrl, videoUrl, title }) {
-  const ytId = extractYouTubeId(youtubeUrl);
+export default function VideoLesson({ youtubeUrl, youtubeUrlTr, videoUrl, title }) {
+  const [lang, setLang] = useState('en');
+
+  const activeUrl = lang === 'tr' && youtubeUrlTr ? youtubeUrlTr : youtubeUrl;
+  const ytId = extractYouTubeId(activeUrl);
 
   // ----- YouTube embed (preferred) -----
   if (ytId) {
     const src = `https://www.youtube-nocookie.com/embed/${ytId}?rel=0&modestbranding=1`;
     return (
       <div className="video-lesson">
+        {youtubeUrlTr && (
+          <div className="video-lesson__lang-toggle" style={{ marginBottom: '12px', display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
+            <button 
+              onClick={() => setLang('en')} 
+              style={{ padding: '4px 12px', borderRadius: '20px', border: '1px solid #d1d5db', background: lang === 'en' ? '#f3f4f6' : 'white', cursor: 'pointer', fontSize: '14px', fontWeight: lang === 'en' ? '600' : '400', color: lang === 'en' ? '#111827' : '#6b7280' }}
+            >
+              English
+            </button>
+            <button 
+              onClick={() => setLang('tr')} 
+              style={{ padding: '4px 12px', borderRadius: '20px', border: '1px solid #d1d5db', background: lang === 'tr' ? '#f3f4f6' : 'white', cursor: 'pointer', fontSize: '14px', fontWeight: lang === 'tr' ? '600' : '400', color: lang === 'tr' ? '#111827' : '#6b7280' }}
+            >
+              Türkçe
+            </button>
+          </div>
+        )}
         <div className="video-lesson__player video-lesson__player--youtube">
           <iframe
             key={ytId}
