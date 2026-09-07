@@ -1,7 +1,7 @@
 // Material card for any kind of supporting file.
 // Type can be: PDF | DOCX | PPTX | IMAGE | VIDEO | LINK | DOCUMENT.
 // Browsers will display PDFs/IMAGEs inline and offer to download DOCX/PPTX.
-export default function MaterialCard({ title, description, url, type = 'DOCUMENT' }) {
+export default function MaterialCard({ title, description, url, type = 'DOCUMENT', onOpen }) {
   const icon = ICONS[type?.toUpperCase()] || '📄';
   return (
     <a
@@ -13,7 +13,9 @@ export default function MaterialCard({ title, description, url, type = 'DOCUMENT
         if (!url || url === '#') {
           e.preventDefault();
           alert('This material is a placeholder. Real file will be linked when published.');
+          return;
         }
+        onOpen?.();
       }}
     >
       <span className="material-card__icon">{icon}</span>

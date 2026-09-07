@@ -96,6 +96,9 @@ export default function RegisterPage() {
         <p className="auth-footer">
           Already have an account? <Link to="/login">Sign in</Link>
         </p>
+        <p className="auth-footer">
+          <Link to="/about">What is this course? →</Link>
+        </p>
       </div>
       <div className="auth-side">
         <h2>Why GreenMOOC?</h2>

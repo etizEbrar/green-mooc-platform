@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
@@ -6,6 +7,7 @@ import { modules, units, totalUnitsCount } from '../data/courseData';
 import LearningSidebar from '../components/LearningSidebar';
 import ModuleCard from '../components/ModuleCard';
 import ProgressBar from '../components/ProgressBar';
+import { CERTIFICATE_THRESHOLD_PERCENT, completionStats } from '../lib/certificate';
 
 export default function DashboardPage() {
   const { currentUser } = useAuth();
@@ -33,9 +35,12 @@ export default function DashboardPage() {
     [progress]
   );
 
-  const overallPercent = totalUnitsCount
-    ? Math.round((completedCount / totalUnitsCount) * 100)
-    : 0;
+  // Named certStats to avoid shadowing by the per-module `stats` map below.
+  const certStats = useMemo(
+    () => completionStats(progress, totalUnitsCount),
+    [progress]
+  );
+  const overallPercent = certStats.percent;
 
   const moduleStats = useMemo(() => {
     const stats = {};
@@ -74,14 +79,14 @@ export default function DashboardPage() {
               Continue building your green and circular economy expertise — one unit at a time.
             </p>
             {nextUnit && (
-              <a
+              <Link
                 className="btn btn--primary hero__cta"
-                href={`/modules/${nextUnit.module.id}/units/${nextUnit.unit.id}`}
+                to={`/modules/${nextUnit.module.id}/units/${nextUnit.unit.id}`}
               >
                 {completedCount === 0
                   ? `Start with Unit ${nextUnit.unit.number}: ${nextUnit.unit.title} →`
                   : `Continue: Unit ${nextUnit.unit.number} — ${nextUnit.unit.title} →`}
-              </a>
+              </Link>
             )}
           </div>
           <div className="hero__progress">
@@ -94,6 +99,23 @@ export default function DashboardPage() {
               {completedCount} of {totalUnitsCount} units completed
             </p>
           </div>
+        </section>
+
+        <section className={`cert-banner ${certStats.eligible ? 'is-earned' : ''}`}>
+          <span className="cert-banner__icon" aria-hidden="true">
+            {certStats.eligible ? '🏅' : '🎯'}
+          </span>
+          <div className="cert-banner__text">
+            <h2>{certStats.eligible ? 'Your certificate is ready' : 'Certificate of completion'}</h2>
+            <p className="muted">
+              {certStats.eligible
+                ? `You have completed ${certStats.percent}% of the course — above the ${CERTIFICATE_THRESHOLD_PERCENT}% requirement.`
+                : `Complete ${certStats.requiredUnits} of ${certStats.total} units (${CERTIFICATE_THRESHOLD_PERCENT}%) to earn your certificate — ${certStats.unitsRemaining} to go.`}
+            </p>
+          </div>
+          <Link className={`btn ${certStats.eligible ? 'btn--primary' : 'btn--ghost'}`} to="/certificate">
+            {certStats.eligible ? 'Get my certificate →' : 'View progress →'}
+          </Link>
         </section>
 
         <section className="modules-section">

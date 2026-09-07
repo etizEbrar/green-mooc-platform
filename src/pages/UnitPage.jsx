@@ -16,6 +16,14 @@ import ActionPlanActivity from '../components/ActionPlanActivity';
 import MatchingActivity from '../components/MatchingActivity';
 import SortingActivity from '../components/SortingActivity';
 import BranchingScenarioActivity from '../components/BranchingScenarioActivity';
+import ActivityFeedback from '../components/ActivityFeedback';
+import useTimeOnUnit from '../hooks/useTimeOnUnit';
+import { recordUnitVisit, recordInteraction } from '../lib/engagement';
+
+// Activity types that produce a real score. Everything else saves score: 100
+// simply to mark "submitted", so recording those as quiz scores would make the
+// consortium's average-score metric meaningless.
+const SCORED_TYPES = ['multiple-choice', 'matching', 'sorting', 'branching-scenario'];
 
 export default function UnitPage() {
   const { moduleId, unitId } = useParams();
@@ -57,6 +65,14 @@ export default function UnitPage() {
     })();
   }, [currentUser, unit?.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // Engagement metrics: one visit per unit open, plus visible time on the page.
+  useEffect(() => {
+    if (!currentUser || !unit) return;
+    recordUnitVisit(currentUser.uid, unit.id, module?.id);
+  }, [currentUser, unit?.id]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useTimeOnUnit(currentUser?.uid, unit?.id);
+
   if (!unit || !module) {
     return (
       <div className="learning-shell">
@@ -76,15 +92,17 @@ export default function UnitPage() {
   const handleActivitySubmit = async (result) => {
     setActivityResult(result);
     if (!currentUser) return;
+    recordInteraction(currentUser.uid, unit.id, 'activityAttempts');
     const ref = doc(db, 'users', currentUser.uid, 'progress', unit.id);
     await setDoc(
       ref,
       {
+        uid: currentUser.uid,
         moduleId: module.id,
         unitId: unit.id,
         activityCompleted: true,
         activityResult: result,
-        quizScore: result?.score ?? null,
+        quizScore: scoreFor(unit, result),
         completed: progress?.completed ?? false,
         updatedAt: serverTimestamp()
       },
@@ -104,11 +122,12 @@ export default function UnitPage() {
       await setDoc(
         ref,
         {
+          uid: currentUser.uid,
           moduleId: module.id,
           unitId: unit.id,
           completed: true,
           activityCompleted: !!activityResult,
-          quizScore: activityResult?.score ?? null,
+          quizScore: scoreFor(unit, activityResult),
           updatedAt: serverTimestamp(),
           completedAt: serverTimestamp()
         },
@@ -183,6 +202,9 @@ export default function UnitPage() {
               youtubeUrlTr={unit.youtubeUrlTr}
               videoUrl={unit.videoUrl}
               title={unit.title}
+              onEngage={() =>
+                currentUser && recordInteraction(currentUser.uid, unit.id, 'videoPlays')
+              }
             />
           ) : (
             <div className="video-coming-soon">
@@ -216,6 +238,9 @@ export default function UnitPage() {
                   description={m.description || materialTypeBlurb(m.type)}
                   url={m.url}
                   type={m.type || 'DOCUMENT'}
+                  onOpen={() =>
+                    currentUser && recordInteraction(currentUser.uid, unit.id, 'materialOpens')
+                  }
                 />
               ))}
             </div>
@@ -230,6 +255,9 @@ export default function UnitPage() {
               <p className="muted">Loading activity…</p>
             )}
           </div>
+          {progressLoaded && activityResult && (
+            <ActivityFeedback unit={unit} result={activityResult} />
+          )}
         </section>
 
         <section className="unit-section unit-section--complete">
@@ -261,6 +289,12 @@ export default function UnitPage() {
       </div>
     </div>
   );
+}
+
+// Only real assessments contribute a score.
+function scoreFor(unit, result) {
+  if (!result || !SCORED_TYPES.includes(unit.activityType)) return null;
+  return typeof result.score === 'number' ? result.score : null;
 }
 
 function prettyActivityType(t) {

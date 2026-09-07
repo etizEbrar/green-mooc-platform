@@ -11,6 +11,13 @@
 //                               | 'case-study' | 'matching' | 'sorting'
 //                               | 'action-plan'
 //   activityTitle, activityDescription
+//   expertFeedback[]            optional — bullet points shown after the learner
+//                               submits, under "What a strong answer covers".
+//                               Most useful on open-ended activities
+//                               (reflection / case-study / action-plan) where
+//                               there is nothing to score automatically. When
+//                               omitted, a generic self-review checklist is
+//                               shown instead (see ActivityFeedback.jsx).
 //   …one of: quizQuestions / quizSections / checklistItems
 //            / reflectionQuestions / caseStudy / matchingPairs
 //            / sortingActivity / actionPlanFields

@@ -9,10 +9,21 @@
 //
 // If neither URL is present, the component returns null — the parent (UnitPage)
 // is expected to render the "video coming soon" card instead.
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-export default function VideoLesson({ youtubeUrl, youtubeUrlTr, videoUrl, title }) {
+// `onEngage` is called at most once per mount, the first time the learner
+// interacts with the player. YouTube embeds do not expose playback events
+// without loading the IFrame Player API, so a first pointer-down on the player
+// is what we count as "the learner started the video".
+export default function VideoLesson({ youtubeUrl, youtubeUrlTr, videoUrl, title, onEngage }) {
   const [lang, setLang] = useState('en');
+  const engaged = useRef(false);
+
+  const handleEngage = () => {
+    if (engaged.current) return;
+    engaged.current = true;
+    onEngage?.();
+  };
 
   const activeUrl = lang === 'tr' && youtubeUrlTr ? youtubeUrlTr : youtubeUrl;
   const ytId = extractYouTubeId(activeUrl);
@@ -38,7 +49,10 @@ export default function VideoLesson({ youtubeUrl, youtubeUrlTr, videoUrl, title 
             </button>
           </div>
         )}
-        <div className="video-lesson__player video-lesson__player--youtube">
+        <div
+          className="video-lesson__player video-lesson__player--youtube"
+          onPointerDown={handleEngage}
+        >
           <iframe
             key={ytId}
             src={src}
@@ -55,10 +69,10 @@ export default function VideoLesson({ youtubeUrl, youtubeUrlTr, videoUrl, title 
   }
 
   // ----- Local-file fallback -----
-  return <LocalVideo videoUrl={videoUrl} title={title} />;
+  return <LocalVideo videoUrl={videoUrl} title={title} onEngage={handleEngage} />;
 }
 
-function LocalVideo({ videoUrl, title }) {
+function LocalVideo({ videoUrl, title, onEngage }) {
   const [errored, setErrored] = useState(false);
   useEffect(() => setErrored(false), [videoUrl]);
 
@@ -91,6 +105,7 @@ function LocalVideo({ videoUrl, title }) {
           preload="metadata"
           playsInline
           src={videoUrl}
+          onPlay={onEngage}
           onError={() => setErrored(true)}
         >
           Your browser does not support inline video playback.{' '}

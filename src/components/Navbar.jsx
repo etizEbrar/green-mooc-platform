@@ -1,33 +1,55 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { isAdmin } from '../lib/admins';
 
 export default function Navbar() {
-  const { currentUser, logout } = useAuth();
+  const { currentUser, loading, logout } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
     await logout();
-    navigate('/login');
+    navigate('/');
   };
 
+  const linkClass = ({ isActive }) => (isActive ? 'active' : '');
+
   return (
-    <nav className="navbar">
+    <nav className="navbar no-print">
       <div className="navbar__inner">
-        <Link to={currentUser ? '/dashboard' : '/login'} className="navbar__brand">
+        <Link to="/" className="navbar__brand">
           <span className="navbar__logo">🌿</span>
-          <span className="navbar__title">GreenMOOC</span>
+          <span className="navbar__titles">
+            <span className="navbar__title">GreenMOOC</span>
+            <span className="navbar__subtitle">a CREDIT project platform</span>
+          </span>
         </Link>
 
-        {currentUser && (
-          <div className="navbar__links">
-            <NavLink to="/dashboard" className={({ isActive }) => (isActive ? 'active' : '')}>
-              Dashboard
-            </NavLink>
-          </div>
-        )}
+        <div className="navbar__links">
+          <NavLink to="/about" className={linkClass}>
+            About
+          </NavLink>
+          <NavLink to="/pilots" className={linkClass}>
+            Pilots
+          </NavLink>
+          {currentUser && (
+            <>
+              <NavLink to="/dashboard" className={linkClass}>
+                Dashboard
+              </NavLink>
+              <NavLink to="/certificate" className={linkClass}>
+                Certificate
+              </NavLink>
+              {isAdmin(currentUser) && (
+                <NavLink to="/analytics" className={linkClass}>
+                  Analytics
+                </NavLink>
+              )}
+            </>
+          )}
+        </div>
 
         <div className="navbar__actions">
-          {currentUser ? (
+          {loading ? null : currentUser ? (
             <>
               <span className="navbar__user">
                 {currentUser.displayName || currentUser.email}

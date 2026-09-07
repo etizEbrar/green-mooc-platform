@@ -65,6 +65,9 @@ export default function LoginPage() {
         <p className="auth-footer">
           Don't have an account? <Link to="/register">Create one</Link>
         </p>
+        <p className="auth-footer">
+          <Link to="/about">What is this course? →</Link>
+        </p>
       </div>
       <div className="auth-side">
         <h2>Learn. Apply. Transform.</h2>

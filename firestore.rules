@@ -1,0 +1,93 @@
+rules_version = '2';
+
+// Firestore security rules for the CREDIT MOOC.
+//
+// Deploy with:   firebase deploy --only firestore:rules
+// (or paste into Firebase console → Firestore Database → Rules)
+//
+// Two roles:
+//   • learner  — full access to their own documents, nothing else
+//   • admin    — read-only access across all learners, for /analytics
+//
+// Keep the admin list below in sync with VITE_ADMIN_EMAILS in .env.local.
+// The env var only hides the UI; THIS list is what actually protects data.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function adminEmails() {
+      // TODO: replace with the consortium's real administrator accounts.
+      return [
+        'admin@example.org'
+      ];
+    }
+
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.token.email in adminEmails();
+    }
+
+    function isOwner(uid) {
+      return request.auth != null && request.auth.uid == uid;
+    }
+
+    // ---- Learner profile -------------------------------------------------
+    match /users/{uid} {
+      allow read: if isOwner(uid) || isAdmin();
+      allow create, update: if isOwner(uid);
+      allow delete: if false;
+
+      // ---- Unit progress -------------------------------------------------
+      match /progress/{unitId} {
+        allow read: if isOwner(uid) || isAdmin();
+        // uid must match the parent document, so a learner cannot write rows
+        // that would be attributed to someone else in the analytics.
+        allow create, update: if isOwner(uid)
+          && (!request.resource.data.keys().hasAny(['uid'])
+              || request.resource.data.uid == uid);
+        allow delete: if isOwner(uid);
+      }
+
+      // ---- Engagement metrics --------------------------------------------
+      match /engagement/{unitId} {
+        allow read: if isOwner(uid) || isAdmin();
+        allow create, update: if isOwner(uid)
+          && (!request.resource.data.keys().hasAny(['uid'])
+              || request.resource.data.uid == uid);
+        allow delete: if false;
+      }
+
+      // ---- Certificates ---------------------------------------------------
+      // Written by the client when the learner crosses the threshold. This is
+      // convenient but not tamper-proof: a determined learner could write a
+      // certificate document directly. If the consortium needs certificates to
+      // be authoritative, move issuing into a Cloud Function, set
+      // `allow write: if false` here, and verify codes server-side.
+      match /certificates/{certId} {
+        allow read: if isOwner(uid) || isAdmin();
+        allow create, update: if isOwner(uid);
+        allow delete: if false;
+      }
+    }
+
+    // ---- Collection-group reads for the analytics dashboard --------------
+    // The dashboard queries progress / engagement / certificates across every
+    // learner. Collection-group queries are matched by these rules, not by the
+    // nested ones above, so admins need an explicit grant here.
+    match /{path=**}/progress/{unitId} {
+      allow read: if isAdmin();
+    }
+    match /{path=**}/engagement/{unitId} {
+      allow read: if isAdmin();
+    }
+    match /{path=**}/certificates/{certId} {
+      allow read: if isAdmin();
+    }
+
+    // Everything else is closed.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

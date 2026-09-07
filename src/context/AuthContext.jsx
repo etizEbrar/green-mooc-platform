@@ -8,7 +8,6 @@ import {
 } from 'firebase/auth';
 import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { auth, db } from '../firebase';
-import LoadingScreen from '../components/LoadingScreen';
 
 const AuthContext = createContext(null);
 
@@ -44,11 +43,12 @@ export function AuthProvider({ children }) {
 
   const value = { currentUser, register, login, logout, loading };
 
-  return (
-    <AuthContext.Provider value={value}>
-      {loading ? <LoadingScreen /> : children}
-    </AuthContext.Provider>
-  );
+  // The provider no longer withholds the whole tree while Firebase resolves.
+  // The public introduction and the pilot pages must render immediately —
+  // they are what the CREDIT project website links to, and a visitor should
+  // never wait on an auth round-trip to read them. Routes that genuinely need
+  // a user wait inside ProtectedRoute instead.
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
 export function useAuth() {
