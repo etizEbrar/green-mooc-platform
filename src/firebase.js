@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import { getFunctions } from "firebase/functions";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDkg-BUxAMKZ57bC0GmgSKJOhSt-b7Da1Q",
@@ -16,5 +17,9 @@ const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+
+// Callable Cloud Functions. The region must match setGlobalOptions() in
+// functions/index.js — a mismatch fails at call time, not at build time.
+export const functions = getFunctions(app, "europe-west1");
 
 export default app;

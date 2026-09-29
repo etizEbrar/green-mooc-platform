@@ -39,6 +39,9 @@ export default function SiteFooter() {
             <li>
               <Link to="/certificate">Certificate</Link>
             </li>
+            <li>
+              <Link to="/verify">Verify a certificate</Link>
+            </li>
           </ul>
         </div>
 

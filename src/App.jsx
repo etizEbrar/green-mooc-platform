@@ -7,6 +7,7 @@ import SiteFooter from './components/SiteFooter';
 
 import AboutPage from './pages/AboutPage';
 import PilotsPage from './pages/PilotsPage';
+import VerifyPage from './pages/VerifyPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
@@ -32,6 +33,12 @@ export default function App() {
           <Route path="/" element={<AboutPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/pilots" element={<PilotsPage />} />
+
+          {/* Public certificate verification. Anyone holding a printed
+              certificate must be able to check it without an account, so this
+              stays outside ProtectedRoute. */}
+          <Route path="/verify" element={<VerifyPage />} />
+          <Route path="/verify/:code" element={<VerifyPage />} />
 
           <Route
             path="/login"

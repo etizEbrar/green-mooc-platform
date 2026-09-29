@@ -59,15 +59,14 @@ service cloud.firestore {
       }
 
       // ---- Certificates ---------------------------------------------------
-      // Written by the client when the learner crosses the threshold. This is
-      // convenient but not tamper-proof: a determined learner could write a
-      // certificate document directly. If the consortium needs certificates to
-      // be authoritative, move issuing into a Cloud Function, set
-      // `allow write: if false` here, and verify codes server-side.
+      // Read-only for everyone. Certificates are written exclusively by the
+      // `issueCertificate` Cloud Function, which recomputes completion from
+      // stored progress using the Admin SDK (Admin SDK writes bypass these
+      // rules). Denying client writes is what makes a certificate evidence of
+      // completion rather than evidence that someone opened the console.
       match /certificates/{certId} {
         allow read: if isOwner(uid) || isAdmin();
-        allow create, update: if isOwner(uid);
-        allow delete: if false;
+        allow write: if false;
       }
     }
 

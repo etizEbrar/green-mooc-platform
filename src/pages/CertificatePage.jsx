@@ -1,14 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { collection, doc, getDoc, getDocs, setDoc, serverTimestamp } from 'firebase/firestore';
-import { db } from '../firebase';
+import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
+import { httpsCallable } from 'firebase/functions';
+import { db, functions } from '../firebase';
 import { useAuth } from '../context/AuthContext';
 import { modules, units, totalUnitsCount } from '../data/courseData';
-import {
-  CERTIFICATE_THRESHOLD_PERCENT,
-  completionStats,
-  verificationCode
-} from '../lib/certificate';
+import { CERTIFICATE_THRESHOLD_PERCENT, completionStats } from '../lib/certificate';
 import Certificate from '../components/Certificate';
 import { downloadCertificatePdf, certificateFileName } from '../lib/certificatePdf';
 import LearningSidebar from '../components/LearningSidebar';
@@ -83,35 +80,23 @@ export default function CertificatePage() {
     [progress]
   );
 
+  // Issuing happens in the `issueCertificate` Cloud Function, never here.
+  // The function recomputes completion from stored progress with the Admin
+  // SDK, and firestore.rules denies clients any write to `certificates`, so
+  // the numbers on the certificate cannot be set by the browser. The eligible
+  // check below is only there to keep the button out of the way — the server
+  // makes the real decision and will refuse if this page is out of date.
   const handleIssue = async () => {
     if (!currentUser || !stats.eligible) return;
-    const learnerName = name.trim();
-    if (!learnerName) {
-      setError('Please enter the name that should appear on the certificate.');
-      return;
-    }
     setIssuing(true);
     setError('');
     try {
-      const issuedAtISO = new Date().toISOString();
-      const record = {
-        learnerName,
-        email: currentUser.email || '',
-        unitsCompleted: stats.completedCount,
-        unitsTotal: stats.total,
-        percent: stats.percent,
-        thresholdPercent: CERTIFICATE_THRESHOLD_PERCENT,
-        code: verificationCode(currentUser.uid, issuedAtISO),
-        issuedAtISO,
-        issuedAt: serverTimestamp()
-      };
-      await setDoc(doc(db, 'users', currentUser.uid, 'certificates', 'completion'), record, {
-        merge: true
-      });
-      setCertificate(record);
+      const issue = httpsCallable(functions, 'issueCertificateFn');
+      const { data } = await issue({ learnerName: name });
+      setCertificate(data.certificate);
     } catch (err) {
       console.error('Certificate issue failed', err);
-      setError('Could not issue the certificate. Please check your connection and try again.');
+      setError(issueErrorMessage(err));
     } finally {
       setIssuing(false);
     }
@@ -269,4 +254,22 @@ export default function CertificatePage() {
       </div>
     </div>
   );
+}
+
+// The callable returns HttpsError codes; `message` is written for the learner
+// by the function itself, so pass it through where it is meaningful.
+function issueErrorMessage(err) {
+  switch (err?.code) {
+    case 'functions/failed-precondition':
+      return err.message;
+    case 'functions/invalid-argument':
+      return err.message;
+    case 'functions/unauthenticated':
+      return 'Your session has expired. Please sign in again.';
+    case 'functions/unavailable':
+    case 'functions/deadline-exceeded':
+      return 'The certificate service is not responding. Please try again in a moment.';
+    default:
+      return 'Could not issue the certificate. Please check your connection and try again.';
+  }
 }

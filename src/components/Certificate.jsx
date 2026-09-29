@@ -1,5 +1,5 @@
 import { project } from '../data/projectData';
-import { formatIssueDate } from '../lib/certificate';
+import { certificateVerifyUrl, formatIssueDate } from '../lib/certificate';
 
 // The printable certificate itself. Presentational only — it receives an
 // already-issued certificate record, so it can be rendered anywhere
@@ -57,6 +57,13 @@ export default function Certificate({ cert, moduleBreakdown }) {
             <strong>{project.grantNumber}</strong>
           </div>
         </footer>
+
+        {/* Printed on the document so a third party can check it without
+            being told where to look. Rendered as text, not a link: this is
+            rasterised into the PDF, where a link would not be clickable. */}
+        <p className="certificate__verify">
+          Verify this certificate at <strong>{certificateVerifyUrl(cert.code)}</strong>
+        </p>
 
         <p className="certificate__disclaimer">{project.disclaimer}</p>
       </div>

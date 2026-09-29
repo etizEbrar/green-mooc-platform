@@ -30,30 +30,41 @@ export function completionStats(progressMap, totalUnits) {
   };
 }
 
-// Short, stable, human-readable code printed on the certificate so a third
-// party can ask the consortium to verify it. Deterministic: the same learner
-// and the same issue date always produce the same code.
-export function verificationCode(uid, issuedAtISO) {
-  const day = (issuedAtISO || '').slice(0, 10);
-  const raw = `${uid || 'anonymous'}|${day}`;
-  const hash = fnv1a(raw).toString(36).toUpperCase().padStart(7, '0').slice(-7);
-  const year = day.slice(0, 4) || String(new Date().getFullYear());
-  return `CREDIT-${year}-${hash.slice(0, 4)}-${hash.slice(4)}`;
-}
-
-// FNV-1a — small, dependency-free, and good enough for a display code.
-// This is not a security primitive; verification is done against Firestore.
-function fnv1a(str) {
-  let h = 0x811c9dc5;
-  for (let i = 0; i < str.length; i += 1) {
-    h ^= str.charCodeAt(i);
-    h = Math.imul(h, 0x01000193) >>> 0;
-  }
-  return h >>> 0;
-}
+// NOTE: verification codes are generated server-side by the `issueCertificate`
+// Cloud Function (functions/certificate.js) and only displayed here. Keeping a
+// second implementation in the browser would invite the two to drift apart,
+// and the browser's answer would not be trusted anyway.
 
 export function formatIssueDate(iso, locale = 'en-GB') {
   const d = iso ? new Date(iso) : new Date();
   if (Number.isNaN(d.getTime())) return '';
   return d.toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric' });
+}
+
+// ---------------------------------------------------------------------------
+// Verification links
+// ---------------------------------------------------------------------------
+
+// The public page that checks a printed code. Derived from where the app is
+// actually served so it stays right on localhost, GitHub Pages and a custom
+// domain alike; set VITE_PUBLIC_URL to pin it (useful when certificates are
+// generated somewhere other than the canonical host).
+export function certificateVerifyUrl(code) {
+  const configured = import.meta.env?.VITE_PUBLIC_URL;
+  const base = configured
+    ? String(configured).replace(/\/+$/, '') + '/'
+    : typeof window !== 'undefined'
+    ? window.location.origin + window.location.pathname
+    : '/';
+  return `${base}#/verify/${encodeURIComponent(code || '')}`;
+}
+
+// Accept what people actually paste: a bare code, a code in the wrong case,
+// or the whole verification URL copied out of the address bar.
+export function normaliseCode(input) {
+  const raw = String(input || '').trim();
+  if (!raw) return '';
+  const fromUrl = raw.match(/verify\/([^/?#\s]+)/i);
+  const candidate = fromUrl ? decodeURIComponent(fromUrl[1]) : raw;
+  return candidate.trim().toUpperCase();
 }
