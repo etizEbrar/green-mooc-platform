@@ -966,8 +966,8 @@ export const units = [
       'A 10-question knowledge check on CSRD, double materiality, EU Taxonomy, ISO 14001 and strategic navigation of the sustainability ecosystem.',
     estimatedTime: '25–30 min',
     videoUrl: null,
-    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
-    videoStatus: 'coming-soon',
+    youtubeUrl: 'https://youtu.be/efZXN55IPrU',
+    videoStatus: 'available',
     materials: [
       { title: 'Infographic — Regulatory and Framework Context for SMEs', type: 'IMAGE', url: './assets/module-3/unit-3-5/infographic.png' }
     ],
@@ -1432,8 +1432,8 @@ export const units = [
       'Pick one process from your work and turn it into a circular redesign action — INPUT → USE → OUTPUT, plus the change and its business case.',
     estimatedTime: '20–25 min',
     videoUrl: null,
-    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
-    videoStatus: 'coming-soon',
+    youtubeUrl: 'https://youtu.be/Ia5lGdxm_x4',
+    videoStatus: 'available',
     materials: [],
     lessonNotes: [
       'Every operational process has a **linear shape** by default: take inputs → use them → produce outputs (some intended, some waste). Mapping it is the first step to redesign.',
@@ -1466,8 +1466,8 @@ export const units = [
       'A 5-question reflection that walks you through an eco-design audit of one product across durability, reparability, materials and waste.',
     estimatedTime: '20–25 min',
     videoUrl: null,
-    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
-    videoStatus: 'coming-soon',
+    youtubeUrl: 'https://youtu.be/9NkNs0mBblg',
+    videoStatus: 'available',
     materials: [],
     lessonNotes: [
       '**Eco-design** = designing products and services so they have less environmental impact across their full life cycle: materials, production, use, repair, end-of-life.',
@@ -1498,8 +1498,8 @@ export const units = [
       'Compare two packaging suppliers in a real SME case and write a reasoned, criteria-based decision.',
     estimatedTime: '20–25 min',
     videoUrl: null,
-    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
-    videoStatus: 'coming-soon',
+    youtubeUrl: 'https://youtu.be/vtmkPI9AA_k',
+    videoStatus: 'available',
     materials: [],
     lessonNotes: [
       '**Procurement decisions ripple through the value chain**: a supplier choice today shapes the environmental impact, cost structure and resilience of your business for years.',
@@ -1534,8 +1534,8 @@ export const units = [
       'Audit ONE logistics activity and propose a specific improvement — connecting environmental impact, cost and operational efficiency.',
     estimatedTime: '20–25 min',
     videoUrl: null,
-    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
-    videoStatus: 'coming-soon',
+    youtubeUrl: 'https://youtu.be/bYqYitsP-24',
+    videoStatus: 'available',
     materials: [],
     lessonNotes: [
       'Logistics is often the **largest source of preventable emissions** in service-sector SMEs — repeated trips, half-empty vehicles, unnecessary movements.',
@@ -1567,8 +1567,8 @@ export const units = [
     description: 'Map one circular collaboration with a real partner — making sure both sides benefit.',
     estimatedTime: '20–25 min',
     videoUrl: null,
-    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
-    videoStatus: 'coming-soon',
+    youtubeUrl: 'https://youtu.be/TjPGC6QAz1o',
+    videoStatus: 'available',
     materials: [],
     lessonNotes: [
       'A **circular value chain** isn’t built alone — it depends on suppliers, customers, partners and even waste collectors who can absorb your by-products as their inputs.',
