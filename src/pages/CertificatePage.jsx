@@ -8,6 +8,7 @@ import { modules, units, totalUnitsCount } from '../data/courseData';
 import { CERTIFICATE_THRESHOLD_PERCENT, completionStats } from '../lib/certificate';
 import Certificate from '../components/Certificate';
 import { downloadCertificatePdf, certificateFileName } from '../lib/certificatePdf';
+import { trackCertificateDownload } from '../lib/milestones';
 import LearningSidebar from '../components/LearningSidebar';
 import ProgressBar from '../components/ProgressBar';
 
@@ -111,6 +112,9 @@ export default function CertificatePage() {
         captureRef.current,
         certificateFileName(certificate.learnerName, certificate.code)
       );
+      // Milestone recorded only after the PDF actually built — a failed
+      // download must not inflate the completion figures.
+      trackCertificateDownload(currentUser?.uid, certificate.code, certificate.percent);
     } catch (err) {
       console.error('Certificate PDF generation failed', err);
       setError(

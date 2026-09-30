@@ -12,10 +12,18 @@
 //   • the learner's own submitted answers, played back for review
 //
 // Rendered by UnitPage once an activity result exists.
+import QuizRemediation from './QuizRemediation';
 const SCORED_TYPES = ['multiple-choice', 'matching', 'sorting', 'branching-scenario'];
 
-export default function ActivityFeedback({ unit, result }) {
+export default function ActivityFeedback({ unit, result, onReviewTopic }) {
   if (!result) return null;
+
+  // Multiple-choice quizzes get the full remediation view (PA6 action 16):
+  // a card per question showing what the answer is, why, and where to review
+  // it — instead of a score and a pass/fail verdict.
+  if (unit.activityType === 'multiple-choice' && Array.isArray(result.answers)) {
+    return <QuizRemediation unit={unit} result={result} onReviewTopic={onReviewTopic} />;
+  }
 
   const isScored = SCORED_TYPES.includes(unit.activityType) && typeof result.score === 'number'
     && typeof result.total === 'number' && result.total > 0;

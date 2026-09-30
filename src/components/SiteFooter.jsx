@@ -31,7 +31,9 @@ export default function SiteFooter() {
               <Link to="/about">About the project</Link>
             </li>
             <li>
-              <Link to="/pilots">Pilot activities</Link>
+              <Link to="/" state={{ scrollTo: 'pilots' }}>
+                Pilot activities
+              </Link>
             </li>
             <li>
               <Link to="/dashboard">My learning</Link>

@@ -6,7 +6,6 @@ import FirebaseWarning from './components/FirebaseWarning';
 import SiteFooter from './components/SiteFooter';
 
 import AboutPage from './pages/AboutPage';
-import PilotsPage from './pages/PilotsPage';
 import VerifyPage from './pages/VerifyPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
@@ -32,7 +31,13 @@ export default function App() {
               between this MOOC and the CREDIT project website. */}
           <Route path="/" element={<AboutPage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/pilots" element={<PilotsPage />} />
+          {/* Pilot activities live in a section on the landing page (PA6
+              action 14) rather than on a route of their own. The old /pilots
+              link is kept as a redirect so shared links still work. */}
+          <Route
+            path="/pilots"
+            element={<Navigate to="/" state={{ scrollTo: 'pilots' }} replace />}
+          />
 
           {/* Public certificate verification. Anyone holding a printed
               certificate must be able to check it without an account, so this

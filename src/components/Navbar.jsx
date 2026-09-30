@@ -28,7 +28,7 @@ export default function Navbar() {
           <NavLink to="/about" className={linkClass}>
             About
           </NavLink>
-          <NavLink to="/pilots" className={linkClass}>
+          <NavLink to="/" state={{ scrollTo: 'pilots' }} className={linkClass} end>
             Pilots
           </NavLink>
           {currentUser && (

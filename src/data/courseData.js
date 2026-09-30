@@ -98,7 +98,10 @@ export const units = [
     videoUrl: null,
     youtubeUrl: "https://youtu.be/FzFZNhFe2CE",
     videoStatus: 'available',
-    materials: [],
+    materials: [
+      { title: 'Learning support material — Introduction to Green and Circular Economy', type: 'PDF', url: './assets/module-1/unit-1-1/learning-material.pdf' },
+      { title: 'Infographic — Introduction to Green and Circular Economy', type: 'PDF', url: './assets/module-1/unit-1-1/infographic.pdf' }
+    ],
     lessonNotes: [
       'The **green economy** is an economic system that supports growth and jobs while respecting environmental limits — built on three interconnected pillars: **Environmental, Social and Economic** sustainability.',
       'A **linear economy** follows take → make → dispose. A **circular economy** keeps materials and products in use as long as possible through Reduce, Reuse, Repair, Remanufacture and Recycle.',
@@ -165,7 +168,10 @@ export const units = [
     videoUrl: null,
     youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
-    materials: [],
+    materials: [
+      { title: 'Learning support material — Circular Economy Principles and SME Readiness', type: 'PDF', url: './assets/module-1/unit-1-2/learning-material.pdf' },
+      { title: 'Infographic — Circular Economy Principles and SME Readiness', type: 'PDF', url: './assets/module-1/unit-1-2/infographic.pdf' }
+    ],
     lessonNotes: [
       'Circular economy is operationalised through the **9R framework**: Refuse, Rethink, Reduce, Reuse, Repair, Refurbish, Remanufacture, Repurpose, Recycle — moving from prevention (highest value) to recycling (lowest).',
       '**SME readiness** typically falls into three levels: **Reactive** (compliance/client-driven), **Strategic** (planned but not systematic), **Mature** (circularity shapes design, procurement and innovation).',
@@ -201,7 +207,10 @@ export const units = [
     videoUrl: null,
     youtubeUrl: "https://youtu.be/kOpzAcfpWYY",
     videoStatus: 'available',
-    materials: [],
+    materials: [
+      { title: 'Learning support material — Green Entrepreneurship and Innovation Ecosystems', type: 'PDF', url: './assets/module-1/unit-1-3/learning-material.pdf' },
+      { title: 'Infographic — Green Entrepreneurship and Innovation Ecosystems', type: 'PDF', url: './assets/module-1/unit-1-3/infographic.pdf' }
+    ],
     lessonNotes: [
       '**Green entrepreneurship** turns sustainability challenges into business opportunities — through new products, processes or business models that create environmental and social value alongside profit.',
       'Green innovation rarely happens in isolation: it depends on an **innovation ecosystem** of universities, public funding programmes, suppliers, business support agencies, peer SMEs and customers.',
@@ -237,7 +246,10 @@ export const units = [
     videoUrl: null,
     youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
-    materials: [],
+    materials: [
+      { title: 'Learning support material — The Twin Transition: Digitalisation and Sustainability', type: 'PDF', url: './assets/module-1/unit-1-4/learning-material.pdf' },
+      { title: 'Infographic — The Twin Transition: Digitalisation and Sustainability', type: 'PDF', url: './assets/module-1/unit-1-4/infographic.pdf' }
+    ],
     lessonNotes: [
       'The **twin transition** is the simultaneous **green and digital** transformation: digital tools accelerate sustainability, and sustainability gives digital investment a clear purpose.',
       'Match the **right tool** to the **right goal**: smart energy meters for energy reduction, route optimisation for transport emissions, simple dashboards for reporting.',
@@ -316,7 +328,10 @@ export const units = [
     videoUrl: null,
     youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
-    materials: [],
+    materials: [
+      { title: 'Learning support material — Competitiveness, Resilience and Green Skills for SMEs', type: 'PDF', url: './assets/module-1/unit-1-5/learning-material.pdf' },
+      { title: 'Infographic — Competitiveness, Resilience and Green Skills for SMEs', type: 'PDF', url: './assets/module-1/unit-1-5/infographic.pdf' }
+    ],
     lessonNotes: [
       '**Sustainability and competitiveness reinforce each other**: efficient resource use cuts costs, sustainability stimulates innovation, and green capabilities build resilience to shocks (energy prices, supply disruption).',
       '**Green skills** are role-specific: managers focus on strategic integration, employees on resource-saving practices, entrepreneurs on green markets and ecosystem partnerships.',
@@ -352,7 +367,10 @@ export const units = [
     videoUrl: null,
     youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
-    materials: [],
+    materials: [
+      { title: 'Learning support material — Green Skills and Competences for SMEs', type: 'PDF', url: './assets/module-2/unit-2-1/learning-material.pdf' },
+      { title: 'Infographic — Green Skills and Competences for SMEs', type: 'PDF', url: './assets/module-2/unit-2-1/infographic.pdf' }
+    ],
     lessonNotes: [
       '**Green skills** = the knowledge, abilities, values and attitudes needed to support a sustainable, resource-efficient economy. They apply to **every role**, not only environmental specialists.',
       'Three categories: **Technical** (energy monitoring, waste sorting), **Managerial** (sustainable decision-making, supplier selection), **Transversal** (problem-solving, communication).',
@@ -479,7 +497,10 @@ export const units = [
     videoUrl: null,
     youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
-    materials: [],
+    materials: [
+      { title: 'Learning support material — Roles and Responsibilities in the Green Transition', type: 'PDF', url: './assets/module-2/unit-2-2/learning-material.pdf' },
+      { title: 'Infographic — Roles and Responsibilities in the Green Transition', type: 'PDF', url: './assets/module-2/unit-2-2/infographic.pdf' }
+    ],
     lessonNotes: [
       'Sustainability is a **shared responsibility** distributed across all organisational levels — manager, employee and shared accountabilities together create real change.',
       '**Managers**: setting goals, allocating budget, providing strategic direction. **Employees**: daily implementation, reporting frontline issues. **Shared**: building culture, communicating progress.',
@@ -515,7 +536,10 @@ export const units = [
     videoUrl: null,
     youtubeUrl: "https://youtu.be/R9izCctFiak",
     videoStatus: 'available',
-    materials: [],
+    materials: [
+      { title: 'Learning support material — Everyday Green Practices in the Workplace', type: 'PDF', url: './assets/module-2/unit-2-3/learning-material.pdf' },
+      { title: 'Infographic — Everyday Green Practices in the Workplace', type: 'PDF', url: './assets/module-2/unit-2-3/infographic.pdf' }
+    ],
     lessonNotes: [
       'Many workplaces consume **20% or more of their energy when nobody is there** (nights, weekends, lunch). A simple "Last Out" checklist routinely cuts utility bills 10–15% within months.',
       'Green practices fall into 4 categories: **Energy** (turn off, sleep mode, no standby), **Waste** (recycle, double-sided, reusables), **Materials** (efficient use, reuse), **Behaviour** (end-of-day check).',
@@ -552,7 +576,10 @@ export const units = [
     videoUrl: null,
     youtubeUrl: "https://youtu.be/pMYkJijED2E",
     videoStatus: 'available',
-    materials: [],
+    materials: [
+      { title: 'Learning support material — Green Decision-Making and Behavioural Change', type: 'PDF', url: './assets/module-2/unit-2-4/learning-material.pdf' },
+      { title: 'Infographic — Green Decision-Making and Behavioural Change', type: 'PDF', url: './assets/module-2/unit-2-4/infographic.pdf' }
+    ],
     lessonNotes: [
       'Awareness is necessary but **not sufficient** for sustainable behaviour — habits, peer norms, convenience and incentives often overpower good intentions.',
       'The most effective behavioural lever is **changing the default** (auto-sleep, double-sided, low standby thermostat). Most people stick with whatever the system gives them.',
@@ -588,7 +615,10 @@ export const units = [
     videoUrl: null,
     youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
-    materials: [],
+    materials: [
+      { title: 'Learning support material — From Skills to Action: Applying Green Practices in SMEs', type: 'PDF', url: './assets/module-2/unit-2-5/learning-material.pdf' },
+      { title: 'Infographic — From Skills to Action: Applying Green Practices in SMEs', type: 'PDF', url: './assets/module-2/unit-2-5/infographic.pdf' }
+    ],
     lessonNotes: [
       'A good first action plan is **specific, realistic and measurable** — vague intentions ("be more sustainable") rarely change anything.',
       'Prioritise opportunities on two axes: **impact** (environmental + operational benefit) and **feasibility** (cost, time, ease).',
@@ -747,7 +777,7 @@ export const units = [
     youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
     materials: [
-      { title: 'Governance — visual map (PNG)', type: 'IMAGE', url: '/assets/module-3/unit-3-2/infographic.png' }
+      { title: 'Infographic — Governance, Leadership and Responsibility', type: 'IMAGE', url: './assets/module-3/unit-3-2/infographic.png' }
     ],
     lessonNotes: [
       '**Governance** = the structures, processes and decision rules that determine how sustainability gets resourced, prioritised and executed. Strategy without governance rarely sticks.',
@@ -939,7 +969,7 @@ export const units = [
     youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
     materials: [
-      { title: 'Regulatory landscape — visual map (PNG)', type: 'IMAGE', url: '/assets/module-3/unit-3-5/infographic.png' }
+      { title: 'Infographic — Regulatory and Framework Context for SMEs', type: 'IMAGE', url: './assets/module-3/unit-3-5/infographic.png' }
     ],
     lessonNotes: [
       '**CSRD** (Corporate Sustainability Reporting Directive) reaches SMEs **indirectly**: large clients subject to CSRD must report on their value chain, so they push requirements through procurement contracts.',
@@ -1083,7 +1113,7 @@ export const units = [
     youtubeUrlTr: "https://youtu.be/ENu5ia89p3Q",
     videoStatus: 'available',
     materials: [
-      { title: 'Learning material — Resource efficiency in SMEs', type: 'PDF', url: '/assets/module-4/unit-4-1/learning-material.pdf' }
+      { title: 'Learning support material — Introduction to Resource Efficiency in SMEs', type: 'PDF', url: './assets/module-4/unit-4-1/learning-material.pdf' }
     ],
     lessonNotes: [
       '**Resource efficiency** = achieving the same or better output with less waste. Smarter use, not less use.',
@@ -1171,8 +1201,8 @@ export const units = [
     youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
     materials: [
-      { title: 'Learning material — Energy efficiency basics', type: 'PDF', url: '/assets/module-4/unit-4-2/learning-material.pdf' },
-      { title: 'Infographic — Energy efficiency at a glance', type: 'PDF', url: '/assets/module-4/unit-4-2/infographic.pdf' }
+      { title: 'Learning support material — Energy Efficiency and Renewable Energy Basics', type: 'PDF', url: './assets/module-4/unit-4-2/learning-material.pdf' },
+      { title: 'Infographic — Energy Efficiency and Renewable Energy Basics', type: 'PDF', url: './assets/module-4/unit-4-2/infographic.pdf' }
     ],
     lessonNotes: [
       'The biggest energy savings come from **behaviour and operations**, not new equipment: turn things off, set thermostats correctly, use sleep modes, close doors when heating runs.',
@@ -1212,7 +1242,9 @@ export const units = [
     videoUrl: null,
     youtubeUrl: "https://youtu.be/ig4hazGi9kM",
     videoStatus: 'available',
-    materials: [],
+    materials: [
+      { title: 'Learning support material — Carbon Emissions and Basic Carbon Management', type: 'PDF', url: './assets/module-4/unit-4-3/learning-material.pdf' }
+    ],
     lessonNotes: [
       'For most SMEs, **energy use is the largest emission source** — burning fossil fuels for electricity, heating, machinery and transport.',
       'Three categories to map: **Energy use, Transport & Logistics, Materials & Waste**. Materials carry "embedded" carbon from their extraction and processing — often underestimated.',
@@ -1274,7 +1306,9 @@ export const units = [
     videoUrl: null,
     youtubeUrl: "https://youtu.be/fepiL-47boE",
     videoStatus: 'available',
-    materials: [],
+    materials: [
+      { title: 'Learning support material — Water Use, Efficiency and Water-Related Risks', type: 'PDF', url: './assets/module-4/unit-4-4/learning-material.pdf' }
+    ],
     lessonNotes: [
       'Water efficiency delivers on **four business dimensions**: lower costs, reduced supply vulnerability, regulatory preparedness, stakeholder trust.',
       'Map water use across **6 categories**: production, cleaning/sanitation, cooling, kitchen/canteen, landscaping, sanitary facilities.',
@@ -1335,7 +1369,9 @@ export const units = [
     videoUrl: null,
     youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
     videoStatus: 'coming-soon',
-    materials: [],
+    materials: [
+      { title: 'Learning support material — Monitoring, Measurement and Simple Indicators for SMEs', type: 'PDF', url: './assets/module-4/unit-4-5/learning-material.pdf' }
+    ],
     lessonNotes: [
       'Most SMEs **already collect more sustainability data than they realise** — utility bills, fuel receipts, waste invoices, purchase records. The barrier is habit, not data.',
       'A good SME indicator is: **simple, relevant, based on existing data, tracked consistently**. Tracking 2–3 indicators consistently beats tracking 10 inconsistently.',

@@ -1,7 +1,9 @@
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { project, partners, audiences, howItWorks } from '../data/projectData';
 import { modules, totalUnitsCount } from '../data/courseData';
+import PilotActivities from '../components/PilotActivities';
 import { CERTIFICATE_THRESHOLD_PERCENT } from '../lib/certificate';
 
 // Public introduction to the CREDIT project and to this MOOC.
@@ -10,6 +12,17 @@ import { CERTIFICATE_THRESHOLD_PERCENT } from '../lib/certificate';
 // who it is for, and how you actually use it.
 export default function AboutPage() {
   const { currentUser } = useAuth();
+  const location = useLocation();
+
+  // This app runs under HashRouter, so the URL hash is the *route* — a plain
+  // "#pilots" anchor would be read as a route, not an in-page target. Links
+  // that want a section therefore pass it in router state and we scroll here.
+  useEffect(() => {
+    const target = location.state?.scrollTo;
+    if (!target) return;
+    const el = document.getElementById(target);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, [location.state]);
 
   return (
     <div className="page page--about">
@@ -197,6 +210,8 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <PilotActivities />
+
       <section className="about-cta">
         <h2>Ready to start?</h2>
         <p>
@@ -214,7 +229,9 @@ export default function AboutPage() {
         )}
         <p className="about-cta__pilots">
           Curious how the course was tested with real businesses?{' '}
-          <Link to="/pilots">See the pilot activities in each partner country →</Link>
+          <Link to="/" state={{ scrollTo: 'pilots' }}>
+            See the pilot activities in each partner country →
+          </Link>
         </p>
       </section>
 

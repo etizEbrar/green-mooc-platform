@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase';
@@ -19,6 +19,7 @@ import BranchingScenarioActivity from '../components/BranchingScenarioActivity';
 import ActivityFeedback from '../components/ActivityFeedback';
 import useTimeOnUnit from '../hooks/useTimeOnUnit';
 import { recordUnitVisit, recordInteraction } from '../lib/engagement';
+import { trackUnitComplete, trackQuizAttempt } from '../lib/milestones';
 
 // Activity types that produce a real score. Everything else saves score: 100
 // simply to mark "submitted", so recording those as quiz scores would make the
@@ -41,6 +42,13 @@ export default function UnitPage() {
   const [savingComplete, setSavingComplete] = useState(false);
   const [feedback, setFeedback] = useState('');
   const [progressLoaded, setProgressLoaded] = useState(false);
+
+  // Remediation cards send the learner back up to the lesson notes for the
+  // topic they missed, so the notes section needs a scroll target.
+  const notesRef = useRef(null);
+  const handleReviewTopic = () => {
+    notesRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   useEffect(() => {
     if (!currentUser || !unit) return;
@@ -93,6 +101,11 @@ export default function UnitPage() {
     setActivityResult(result);
     if (!currentUser) return;
     recordInteraction(currentUser.uid, unit.id, 'activityAttempts');
+    // Milestone: quiz attempts carry their score so the consortium can see
+    // whether assessments are too hard, not just how often they are tried.
+    if (SCORED_TYPES.includes(unit.activityType)) {
+      trackQuizAttempt(currentUser.uid, module.id, unit.id, result?.score);
+    }
     const ref = doc(db, 'users', currentUser.uid, 'progress', unit.id);
     await setDoc(
       ref,
@@ -134,6 +147,7 @@ export default function UnitPage() {
         { merge: true }
       );
       setProgress((p) => ({ ...(p || {}), completed: true }));
+      trackUnitComplete(currentUser.uid, module.id, unit.id);
       setFeedback('🎉 Unit marked as completed! Your progress has been saved.');
     } catch (err) {
       console.error(err);
@@ -220,7 +234,7 @@ export default function UnitPage() {
         </section>
 
         {(unit.lessonNotes?.length || unit.transcript) && (
-          <section className="unit-section">
+          <section className="unit-section" ref={notesRef} id="lesson-notes">
             <h2>📖 Lesson notes</h2>
             <LessonNotes notes={unit.lessonNotes} transcript={unit.transcript} />
           </section>
@@ -256,7 +270,11 @@ export default function UnitPage() {
             )}
           </div>
           {progressLoaded && activityResult && (
-            <ActivityFeedback unit={unit} result={activityResult} />
+            <ActivityFeedback
+              unit={unit}
+              result={activityResult}
+              onReviewTopic={handleReviewTopic}
+            />
           )}
         </section>
 

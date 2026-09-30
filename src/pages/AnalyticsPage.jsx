@@ -7,7 +7,8 @@ import { totalUnitsCount } from '../data/courseData';
 import { isAdmin, adminListConfigured } from '../lib/admins';
 import { CERTIFICATE_THRESHOLD_PERCENT } from '../lib/certificate';
 import { formatDuration } from '../lib/engagement';
-import { ACTIVE_WINDOW_DAYS, buildSummary, pct } from '../lib/analytics';
+import { ACTIVE_WINDOW_DAYS, buildSummary, buildMilestoneSummary, pct } from '../lib/analytics';
+import MilestoneSummary from '../components/MilestoneSummary';
 
 // Consortium-facing analytics.
 //
@@ -36,18 +37,20 @@ export default function AnalyticsPage() {
     let cancelled = false;
     (async () => {
       try {
-        const [usersSnap, progressSnap, engagementSnap, certsSnap] = await Promise.all([
+        const [usersSnap, progressSnap, engagementSnap, certsSnap, eventsSnap] = await Promise.all([
           getDocs(collection(db, 'users')),
           getDocs(collectionGroup(db, 'progress')),
           getDocs(collectionGroup(db, 'engagement')),
-          getDocs(collectionGroup(db, 'certificates'))
+          getDocs(collectionGroup(db, 'certificates')),
+          getDocs(collectionGroup(db, 'events'))
         ]);
         if (cancelled) return;
         setData({
           users: usersSnap.docs.map((d) => ({ id: d.id, ...d.data() })),
           progress: progressSnap.docs.map((d) => ({ id: d.id, ...d.data() })),
           engagement: engagementSnap.docs.map((d) => ({ id: d.id, ...d.data() })),
-          certificates: certsSnap.docs.map((d) => ({ id: d.id, ...d.data() }))
+          certificates: certsSnap.docs.map((d) => ({ id: d.id, ...d.data() })),
+          events: eventsSnap.docs.map((d) => ({ id: d.id, ...d.data() }))
         });
       } catch (err) {
         console.error('Analytics load failed', err);
@@ -68,6 +71,10 @@ export default function AnalyticsPage() {
   }, [allowed]);
 
   const summary = useMemo(() => (data ? buildSummary(data) : null), [data]);
+  const milestones = useMemo(
+    () => (data ? buildMilestoneSummary(data.events, data.users.length) : null),
+    [data]
+  );
 
   if (!allowed) {
     return (
@@ -101,6 +108,7 @@ export default function AnalyticsPage() {
       {loading && <p className="muted">Loading analytics…</p>}
       {error && <div className="alert alert--error">{error}</div>}
 
+      {milestones && <MilestoneSummary summary={milestones} />}
       {summary && <AnalyticsView summary={summary} />}
     </div>
   );

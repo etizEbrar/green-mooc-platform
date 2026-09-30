@@ -58,6 +58,17 @@ service cloud.firestore {
         allow delete: if false;
       }
 
+      // ---- Milestone events ------------------------------------------------
+      // Append-only progression log (module starts, unit completions, quiz
+      // attempts, certificate downloads). Learners may add their own events
+      // and read them back; nothing may edit or delete one, so the monitoring
+      // record cannot be rewritten after the fact.
+      match /events/{eventId} {
+        allow read: if isOwner(uid) || isAdmin();
+        allow create: if isOwner(uid) && request.resource.data.uid == uid;
+        allow update, delete: if false;
+      }
+
       // ---- Certificates ---------------------------------------------------
       // Read-only for everyone. Certificates are written exclusively by the
       // `issueCertificate` Cloud Function, which recomputes completion from
@@ -81,6 +92,9 @@ service cloud.firestore {
       allow read: if isAdmin();
     }
     match /{path=**}/certificates/{certId} {
+      allow read: if isAdmin();
+    }
+    match /{path=**}/events/{eventId} {
       allow read: if isAdmin();
     }
 

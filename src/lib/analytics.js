@@ -119,3 +119,88 @@ export function toMillis(ts) {
   return Number.isNaN(parsed) ? 0 : parsed;
 }
 
+// ---------------------------------------------------------------------------
+// Milestone summary (PA6 action 15)
+// ---------------------------------------------------------------------------
+
+/**
+ * Aggregate the milestone event log into the three figures the consortium
+ * asked for: completion rates, drop-off points, and active learner counts.
+ *
+ * @param {Array} events    documents from users/{uid}/events
+ * @param {number} totalUsers registered learners, for rate denominators
+ */
+export function buildMilestoneSummary(events = [], totalUsers = 0) {
+  const byType = (t) => events.filter((e) => e.type === t);
+
+  const starts = byType('module_start');
+  const completions = byType('unit_complete');
+  const attempts = byType('quiz_attempt');
+  const downloads = byType('certificate_download');
+
+  const learnersWhoStarted = new Set(starts.map((e) => e.uid).filter(Boolean));
+  const learnersWhoCompleted = new Set(completions.map((e) => e.uid).filter(Boolean));
+  const learnersWithCertificate = new Set(downloads.map((e) => e.uid).filter(Boolean));
+
+  // Distinct learners reaching each module — the shape of this series is the
+  // drop-off curve.
+  const reachByModule = {};
+  starts.forEach((e) => {
+    if (!e.moduleId || !e.uid) return;
+    (reachByModule[e.moduleId] ||= new Set()).add(e.uid);
+  });
+
+  const funnel = modules.map((m) => {
+    const reached = reachByModule[m.id]?.size || 0;
+    const moduleUnitIds = new Set(units.filter((u) => u.moduleId === m.id).map((u) => u.id));
+    const finishers = new Set(
+      completions.filter((e) => moduleUnitIds.has(e.unitId) && e.uid).map((e) => e.uid)
+    );
+    return {
+      id: m.id,
+      number: m.number,
+      title: m.title,
+      icon: m.icon,
+      reached,
+      completedAny: finishers.size,
+      reachRate: pct(reached, totalUsers)
+    };
+  });
+
+  // Drop-off: the largest fall in learners between one module and the next.
+  let dropOff = null;
+  for (let i = 1; i < funnel.length; i += 1) {
+    const before = funnel[i - 1].reached;
+    const after = funnel[i].reached;
+    const lost = before - after;
+    if (before > 0 && lost > 0 && (!dropOff || lost > dropOff.lost)) {
+      dropOff = {
+        lost,
+        percent: pct(lost, before),
+        from: funnel[i - 1],
+        to: funnel[i]
+      };
+    }
+  }
+
+  const scored = attempts.filter((e) => typeof e.score === 'number');
+
+  return {
+    totalEvents: events.length,
+    learnersStarted: learnersWhoStarted.size,
+    learnersCompletedAUnit: learnersWhoCompleted.size,
+    certificatesDownloaded: downloads.length,
+    learnersWithCertificate: learnersWithCertificate.size,
+    quizAttempts: attempts.length,
+    avgQuizScore: scored.length
+      ? Math.round(scored.reduce((a, e) => a + e.score, 0) / scored.length)
+      : null,
+    // Completion rate: of those who started anything, how many earned a
+    // certificate. Measuring against every registration would mostly report
+    // sign-ups who never opened a lesson.
+    completionRate: pct(learnersWithCertificate.size, learnersWhoStarted.size),
+    activationRate: pct(learnersWhoStarted.size, totalUsers),
+    funnel,
+    dropOff
+  };
+}

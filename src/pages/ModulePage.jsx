@@ -7,6 +7,7 @@ import { getModule, getUnitsForModule } from '../data/courseData';
 import LearningSidebar from '../components/LearningSidebar';
 import UnitCard from '../components/UnitCard';
 import ProgressBar from '../components/ProgressBar';
+import { trackModuleStart } from '../lib/milestones';
 
 export default function ModulePage() {
   const { moduleId } = useParams();
@@ -16,6 +17,12 @@ export default function ModulePage() {
 
   const module = getModule(moduleId);
   const moduleUnits = useMemo(() => getUnitsForModule(moduleId), [moduleId]);
+
+  // Milestone: this learner opened this module (once per session).
+  useEffect(() => {
+    if (!currentUser || !moduleId) return;
+    trackModuleStart(currentUser.uid, moduleId);
+  }, [currentUser, moduleId]);
 
   useEffect(() => {
     if (!currentUser) return;
