@@ -643,8 +643,8 @@ export const units = [
       'Read 8 SWOT-framed SME signals and choose the most strategic response to each. Best answers reflect strategic integration over short-term reaction.',
     estimatedTime: '30–35 min',
     videoUrl: null,
-    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
-    videoStatus: 'coming-soon',
+    youtubeUrl: 'https://youtu.be/nTIpWinX2zk',
+    videoStatus: 'available',
     materials: [],
     lessonNotes: [
       'Sustainability sits on a spectrum: **operational improvement** (cost-saving) → **strategic integration** (long-term competitive positioning). Most SMEs start operational and gradually move strategic.',
@@ -774,8 +774,8 @@ export const units = [
       'Act as sustainability consultant for a Southern European food manufacturing SME. Diagnose the governance structure and propose realistic interventions.',
     estimatedTime: '35–45 min',
     videoUrl: null,
-    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
-    videoStatus: 'coming-soon',
+    youtubeUrl: 'https://youtu.be/tG1YCmfnXl8',
+    videoStatus: 'available',
     materials: [
       { title: 'Infographic — Governance, Leadership and Responsibility', type: 'IMAGE', url: './assets/module-3/unit-3-2/infographic.png' }
     ],
@@ -814,8 +814,8 @@ export const units = [
       'Analyse 8 SME scenarios across sectors and identify the most realistic circular business-model strategy for each.',
     estimatedTime: '30–35 min',
     videoUrl: null,
-    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
-    videoStatus: 'coming-soon',
+    youtubeUrl: 'https://youtu.be/2VdhveMD3No',
+    videoStatus: 'available',
     materials: [],
     lessonNotes: [
       'Five core **circular business model patterns**: (1) **Circular inputs** (recycled/renewable materials), (2) **Product life extension** (repair, refurbish), (3) **Product-as-a-service** (sell access not ownership), (4) **Sharing platforms**, (5) **Resource recovery** (turn waste into new value).',
@@ -929,8 +929,8 @@ export const units = [
       'Apply the Social Circular Business Model Canvas to a 12-employee lifestyle design brand. Reframe value proposition, activities and partnerships.',
     estimatedTime: '30–40 min',
     videoUrl: null,
-    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
-    videoStatus: 'coming-soon',
+    youtubeUrl: 'https://youtu.be/ZYMlbGDq0-4',
+    videoStatus: 'available',
     materials: [],
     lessonNotes: [
       'The **Social Circular Business Model Canvas (SCBMC)** extends the classic Business Model Canvas with environmental and social dimensions — making sustainability a structural element, not an afterthought.',
