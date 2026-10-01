@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
 import FirebaseWarning from './components/FirebaseWarning';
 import SiteFooter from './components/SiteFooter';
+import ScrollToTop from './components/ScrollToTop';
 
 import AboutPage from './pages/AboutPage';
 import VerifyPage from './pages/VerifyPage';
@@ -23,6 +24,7 @@ export default function App() {
 
   return (
     <div className="app-shell">
+      <ScrollToTop />
       <Navbar />
       <FirebaseWarning />
       <main className="app-main">

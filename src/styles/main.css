@@ -2019,9 +2019,17 @@ input, textarea, select {
   font-weight: 700;
   box-shadow: 0 4px 14px rgba(0,0,0,.18);
 }
-.hero__cta:hover {
+/* Specificity matters here. `.btn--primary:hover:not(:disabled)` scores
+   (0,3,0) and would repaint the background dark green, while `.hero__cta`
+   kept the text dark green — the label vanished on hover. Matching both
+   class names plus :not() scores (0,4,0) so this rule wins outright and
+   sets BOTH properties together. */
+.btn--primary.hero__cta:hover:not(:disabled),
+.btn--primary.hero__cta:focus-visible:not(:disabled) {
   transform: translateY(-2px);
   background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  box-shadow: 0 6px 16px rgba(47,143,110,.2);
 }
 
 /* Reduce hero padding inside the sidebar layout for better balance */
