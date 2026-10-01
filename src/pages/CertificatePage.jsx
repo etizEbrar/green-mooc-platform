@@ -144,7 +144,7 @@ export default function CertificatePage() {
           <p className="hero__eyebrow">Certificate</p>
           <h1>Certificate of completion</h1>
           <p className="muted">
-            Complete at least {CERTIFICATE_THRESHOLD_PERCENT}% of the course — that is{' '}
+            Complete at least {CERTIFICATE_THRESHOLD_PERCENT}% of the course — a minimum of{' '}
             {stats.requiredUnits} of {stats.total} units — to receive your certificate.
           </p>
         </header>

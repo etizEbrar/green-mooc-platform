@@ -19,8 +19,8 @@ export default function Navbar() {
         <Link to="/" className="navbar__brand">
           <span className="navbar__logo">🌿</span>
           <span className="navbar__titles">
-            <span className="navbar__title">GreenMOOC</span>
-            <span className="navbar__subtitle">a CREDIT project platform</span>
+            <span className="navbar__title">CREDIT MOOC</span>
+            <span className="navbar__subtitle">Green &amp; Circular Economy Learning Platform</span>
           </span>
         </Link>
 

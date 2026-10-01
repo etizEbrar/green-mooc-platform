@@ -161,7 +161,10 @@ function PilotCard({ pilot }) {
         target="_blank"
         rel="noreferrer"
       >
-        {pilot.country} pilot on the CREDIT project site ↗
+        {pilot.published
+          ? `${pilot.country} pilot on the CREDIT project site`
+          : 'See the pilot training programme'}{' '}
+        ↗
       </a>
     </article>
   );

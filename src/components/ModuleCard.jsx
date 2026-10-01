@@ -7,8 +7,11 @@ export default function ModuleCard({ module, completed = 0, total = 0 }) {
   const statusModifier =
     completed === 0 ? 'badge--muted' : completed === total ? 'badge--success' : 'badge--warning';
 
+  const cta =
+    completed === 0 ? 'Start learning' : completed === total ? 'Review module' : 'Continue learning';
+
   return (
-    <article className="module-card">
+    <Link to={`/modules/${module.id}`} className="module-card" aria-label={`Module ${module.number}: ${module.title} — ${cta}`}>
       <div
         className="module-card__top"
         style={{ background: `linear-gradient(135deg, ${module.color}, ${module.color}cc)` }}
@@ -26,10 +29,8 @@ export default function ModuleCard({ module, completed = 0, total = 0 }) {
             {completed}/{total} units · {percent}%
           </span>
         </div>
-        <Link to={`/modules/${module.id}`} className="btn btn--primary btn--block">
-          {completed === 0 ? 'Start learning' : completed === total ? 'Review module' : 'Continue learning'}
-        </Link>
+        <span className="btn btn--primary btn--block module-card__cta">{cta}</span>
       </div>
-    </article>
+    </Link>
   );
 }

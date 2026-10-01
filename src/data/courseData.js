@@ -1,4 +1,4 @@
-// Course data for the GreenMOOC / CREDIT platform.
+// Course data for the CREDIT MOOC platform.
 // CREDIT — Circular Economy Transition for Sustainable Green Skills
 // (Erasmus+ KA210 GA: 2024-1-EL01-KA210-ADU-000251741).
 //

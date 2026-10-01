@@ -42,12 +42,22 @@ export default function UnitPage() {
   const [savingComplete, setSavingComplete] = useState(false);
   const [feedback, setFeedback] = useState('');
   const [progressLoaded, setProgressLoaded] = useState(false);
+  // Bumping this remounts the activity with no initial result, which is the
+  // only reliable reset given each activity owns its own submitted state.
+  const [retryNonce, setRetryNonce] = useState(0);
 
   // Remediation cards send the learner back up to the lesson notes for the
   // topic they missed, so the notes section needs a scroll target.
   const notesRef = useRef(null);
   const handleReviewTopic = () => {
     notesRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  const activityRef = useRef(null);
+  const handleTryAgain = () => {
+    setActivityResult(null);
+    setRetryNonce((n) => n + 1);
+    activityRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   useEffect(() => {
@@ -158,7 +168,12 @@ export default function UnitPage() {
   };
 
   const renderActivity = () => {
-    const common = { key: unit.id, unit, initialResult: activityResult, onSubmit: handleActivitySubmit };
+    const common = {
+      key: `${unit.id}:${retryNonce}`,
+      unit,
+      initialResult: retryNonce ? null : activityResult,
+      onSubmit: handleActivitySubmit
+    };
     switch (unit.activityType) {
       case 'multiple-choice': return <MultipleChoiceActivity {...common} />;
       case 'checklist': return <ChecklistActivity {...common} />;
@@ -261,7 +276,7 @@ export default function UnitPage() {
           </section>
         )}
 
-        <section className="unit-section">
+        <section className="unit-section" ref={activityRef}>
           <h2>🧩 Activity — {unit.activityTitle}</h2>
           {unit.activityDescription && <p className="muted">{unit.activityDescription}</p>}
           <div className="activity-wrapper">
@@ -293,6 +308,11 @@ export default function UnitPage() {
               >
                 {isCompleted ? '✓ Completed' : savingComplete ? 'Saving…' : 'Mark as completed'}
               </button>
+              {activityResult && (
+                <button className="btn btn--ghost" onClick={handleTryAgain}>
+                  ↻ Try the activity again
+                </button>
+              )}
               {nextUnit && (
                 <button
                   className="btn btn--ghost"

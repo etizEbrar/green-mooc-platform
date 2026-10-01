@@ -22,19 +22,23 @@ export const partners = [
     name: 'S.I.S.E.R.A. Greece',
     role: 'Coordinator',
     country: 'Greece',
-    flag: '🇬🇷'
+    flag: '🇬🇷',
+    // TODO: replace with each partner's own website once confirmed.
+    url: 'https://erasmuscredit.eu'
   },
   {
     name: 'Officine Europa APS',
     role: 'Partner',
     country: 'Italy',
-    flag: '🇮🇹'
+    flag: '🇮🇹',
+    url: 'https://erasmuscredit.eu'
   },
   {
     name: 'Akdeniz Panorama Derneği',
     role: 'Partner',
     country: 'Türkiye',
-    flag: '🇹🇷'
+    flag: '🇹🇷',
+    url: 'https://erasmuscredit.eu'
   }
 ];
 
@@ -87,6 +91,6 @@ export const howItWorks = [
     step: 4,
     icon: '🏅',
     title: 'Earn your certificate',
-    body: 'Your progress saves automatically. Complete at least 75% of the units and you can download a certificate of completion.'
+    body: 'Your progress saves automatically. Complete at least 75% of the course — a minimum of 23 of the 30 units — and you can download a certificate of completion.'
   }
 ];

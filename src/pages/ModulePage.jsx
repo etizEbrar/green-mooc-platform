@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
-import { getModule, getUnitsForModule } from '../data/courseData';
+import { getModule, getUnitsForModule, modules as allModules } from '../data/courseData';
 import LearningSidebar from '../components/LearningSidebar';
 import UnitCard from '../components/UnitCard';
 import ProgressBar from '../components/ProgressBar';
@@ -60,6 +60,12 @@ export default function ModulePage() {
   const total = moduleUnits.length;
   const percent = total ? Math.round((completed / total) * 100) : 0;
 
+  // Finishing a module should feel like finishing something, and point at
+  // the obvious next step rather than leaving the learner on a done page.
+  const isModuleComplete = total > 0 && completed === total;
+  const moduleIndex = allModules.findIndex((m) => m.id === module.id);
+  const nextModule = allModules[moduleIndex + 1];
+
   return (
     <div className="learning-shell">
       <LearningSidebar />
@@ -82,6 +88,32 @@ export default function ModulePage() {
             </span>
           </div>
         </header>
+
+        {!loading && isModuleComplete && (
+          <section className="module-complete">
+            <span className="module-complete__icon" aria-hidden="true">
+              ✓
+            </span>
+            <div className="module-complete__text">
+              <h2>Module {module.number} completed</h2>
+              <p className="muted">
+                You have finished all {total} units in this module.{' '}
+                {nextModule
+                  ? 'Continue to the next module to keep going.'
+                  : 'That is the final module — check your certificate progress.'}
+              </p>
+            </div>
+            {nextModule ? (
+              <Link className="btn btn--primary" to={`/modules/${nextModule.id}`}>
+                Continue to Module {nextModule.number} →
+              </Link>
+            ) : (
+              <Link className="btn btn--primary" to="/certificate">
+                View my certificate →
+              </Link>
+            )}
+          </section>
+        )}
 
         <section className="units-section">
           <div className="section-head">

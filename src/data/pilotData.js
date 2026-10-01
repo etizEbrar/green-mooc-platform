@@ -11,6 +11,9 @@
 // final figures" note — no invented numbers ever reach a visitor, which
 // matters because this page is public and the project reports to EACEA.
 //
+// Until a partner publishes their own results, `partnerUrl` points at the
+// project's pilot training page so the card still leads somewhere useful.
+//
 // Photos: drop image files into  public/assets/pilots/<id>/  and reference
 // them as './assets/pilots/<id>/<file>.jpg' (relative — Vite base is './').
 // While `photos` is empty the card renders placeholder tiles so the layout
@@ -30,7 +33,7 @@ export const pilots = [
     country: 'Greece',
     flag: '🇬🇷',
     partner: 'S.I.S.E.R.A. Greece',
-    partnerUrl: 'https://erasmuscredit.eu',
+    partnerUrl: 'https://erasmuscredit.eu/pa5-pilot-training-program/',
     published: false,
     dates: '',
     location: '',
@@ -47,7 +50,7 @@ export const pilots = [
     country: 'Italy',
     flag: '🇮🇹',
     partner: 'Officine Europa APS',
-    partnerUrl: 'https://erasmuscredit.eu',
+    partnerUrl: 'https://erasmuscredit.eu/pa5-pilot-training-program/',
     published: false,
     dates: '',
     location: '',
@@ -64,7 +67,7 @@ export const pilots = [
     country: 'Türkiye',
     flag: '🇹🇷',
     partner: 'Akdeniz Panorama Derneği',
-    partnerUrl: 'https://erasmuscredit.eu',
+    partnerUrl: 'https://erasmuscredit.eu/pa5-pilot-training-program/',
     published: false,
     dates: '',
     location: '',

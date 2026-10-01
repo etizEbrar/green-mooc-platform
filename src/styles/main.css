@@ -1,5 +1,5 @@
 /* =========================================================================
-   GreenMOOC — main stylesheet
+   CREDIT MOOC — main stylesheet
    Calm sustainability palette, modern card layout, mobile-first responsive.
    ========================================================================= */
 
@@ -3382,4 +3382,56 @@ input, textarea, select {
 @media (max-width: 640px) {
   .funnel__row { grid-template-columns: 1fr; gap: 0.25rem; }
   .funnel__value { text-align: left; }
+}
+
+/* ----- Module cards: whole card is the link (coordinator review) ----- */
+.grid--modules {
+  /* 3 x 2 on desktop, as agreed; still collapses on smaller screens. */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+@media (min-width: 1000px) {
+  .grid--modules { grid-template-columns: repeat(3, 1fr); }
+}
+
+a.module-card { color: inherit; text-decoration: none; }
+a.module-card:hover { color: inherit; }
+a.module-card:focus-visible {
+  outline: 3px solid rgba(47,143,110,.35);
+  outline-offset: 3px;
+}
+/* The CTA is a span inside the card link, so it must not swallow pointer
+   events or it would look like a separate target. */
+.module-card__cta { pointer-events: none; }
+.module-card:hover .module-card__cta {
+  background: var(--color-primary-dark);
+  color: #fff;
+}
+
+/* ----- Module completion banner ----- */
+.module-complete {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+  padding: 1.35rem 1.5rem;
+  border-radius: var(--radius-lg);
+  background: var(--color-primary-light);
+  border: 1px solid var(--color-primary);
+}
+.module-complete__icon {
+  flex: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  background: var(--color-success);
+  color: #fff;
+}
+.module-complete__text { flex: 1; }
+.module-complete__text h2 { font-size: 1.15rem; margin-bottom: 0.2em; }
+.module-complete__text p { margin: 0; font-size: 0.92rem; }
+@media (max-width: 640px) {
+  .module-complete { flex-direction: column; align-items: flex-start; }
 }

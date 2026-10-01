@@ -29,7 +29,7 @@ export default function LoginPage() {
       <div className="auth-card">
         <div className="auth-brand">
           <span className="auth-brand__logo">🌿</span>
-          <h1 className="auth-brand__title">GreenMOOC</h1>
+          <h1 className="auth-brand__title">CREDIT MOOC</h1>
           <p className="auth-brand__tagline">Sustainable learning for tomorrow's leaders</p>
         </div>
         <h2 className="auth-card__heading">Welcome back</h2>

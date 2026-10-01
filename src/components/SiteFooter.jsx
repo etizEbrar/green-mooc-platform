@@ -9,7 +9,7 @@ export default function SiteFooter() {
     <footer className="app-footer no-print">
       <div className="app-footer__inner">
         <div className="app-footer__col">
-          <p className="app-footer__brand">🌿 GreenMOOC</p>
+          <p className="app-footer__brand">CREDIT MOOC</p>
           <p className="app-footer__text">
             The open training platform of the {project.acronym} project —{' '}
             {project.title}.
@@ -50,11 +50,19 @@ export default function SiteFooter() {
         <div className="app-footer__col">
           <p className="app-footer__heading">Consortium</p>
           <ul className="app-footer__list">
-            {partners.map((p) => (
-              <li key={p.name}>
-                <span aria-hidden="true">{p.flag}</span> {p.name}
-              </li>
-            ))}
+            {partners.map((p) =>
+              p.url ? (
+                <li key={p.name}>
+                  <a href={p.url} target="_blank" rel="noreferrer">
+                    <span aria-hidden="true">{p.flag}</span> {p.name} ↗
+                  </a>
+                </li>
+              ) : (
+                <li key={p.name}>
+                  <span aria-hidden="true">{p.flag}</span> {p.name}
+                </li>
+              )
+            )}
           </ul>
           <p className="app-footer__grant">{project.grantNumber}</p>
         </div>

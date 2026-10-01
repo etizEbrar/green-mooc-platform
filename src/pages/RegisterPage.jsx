@@ -39,7 +39,7 @@ export default function RegisterPage() {
       <div className="auth-card">
         <div className="auth-brand">
           <span className="auth-brand__logo">🌿</span>
-          <h1 className="auth-brand__title">GreenMOOC</h1>
+          <h1 className="auth-brand__title">CREDIT MOOC</h1>
           <p className="auth-brand__tagline">Start your sustainability journey</p>
         </div>
         <h2 className="auth-card__heading">Create your account</h2>
@@ -101,7 +101,7 @@ export default function RegisterPage() {
         </p>
       </div>
       <div className="auth-side">
-        <h2>Why GreenMOOC?</h2>
+        <h2>Why CREDIT MOOC?</h2>
         <p>
           Built for entrepreneurs, students and SME teams who want practical knowledge to drive
           the sustainability transition.

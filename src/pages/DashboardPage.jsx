@@ -73,7 +73,7 @@ export default function DashboardPage() {
           <div className="hero__text">
             <p className="hero__eyebrow">Dashboard</p>
             <h1 className="hero__title">
-              Welcome back, <span className="hero__name">{greetingName}</span> 👋
+              Welcome back, <span className="hero__name">{greetingName}</span>
             </h1>
             <p className="hero__subtitle">
               Continue building your green and circular economy expertise — one unit at a time.
@@ -110,7 +110,7 @@ export default function DashboardPage() {
             <p className="muted">
               {certStats.eligible
                 ? `You have completed ${certStats.percent}% of the course — above the ${CERTIFICATE_THRESHOLD_PERCENT}% requirement.`
-                : `Complete ${certStats.requiredUnits} of ${certStats.total} units (${CERTIFICATE_THRESHOLD_PERCENT}%) to earn your certificate — ${certStats.unitsRemaining} to go.`}
+                : `Earn your certificate by completing at least ${CERTIFICATE_THRESHOLD_PERCENT}% of the course — a minimum of ${certStats.requiredUnits} of ${certStats.total} units. ${certStats.unitsRemaining} to go.`}
             </p>
           </div>
           <Link className={`btn ${certStats.eligible ? 'btn--primary' : 'btn--ghost'}`} to="/certificate">
