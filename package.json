@@ -8,7 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "npm run build && git add docs && (git diff --cached --quiet -- docs || git commit -m \"build: update GitHub Pages bundle\") && git push origin main"
   },
   "dependencies": {
     "firebase": "^10.12.2",
