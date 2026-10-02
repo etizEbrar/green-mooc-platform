@@ -68,7 +68,7 @@ export default function ChecklistActivity({ unit, step, initialResult, onSubmit 
         </div>
       ) : (
         <div className="activity-result">
-          <h4>✅ Checklist saved</h4>
+          <h4>Checklist saved</h4>
           <p>
             You ticked <strong>{ticked}</strong> of <strong>{items.length}</strong> items.
             {ticked < items.length && ' The unticked ones can become priorities for your action plan.'}

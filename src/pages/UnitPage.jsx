@@ -158,7 +158,7 @@ export default function UnitPage() {
       );
       setProgress((p) => ({ ...(p || {}), completed: true }));
       trackUnitComplete(currentUser.uid, module.id, unit.id);
-      setFeedback('🎉 Unit marked as completed! Your progress has been saved.');
+      setFeedback('Unit marked as completed. Your progress has been saved.');
     } catch (err) {
       console.error(err);
       setFeedback('Could not save progress. Please check your connection and try again.');
@@ -212,9 +212,13 @@ export default function UnitPage() {
           <p className="unit-header__desc">{unit.description}</p>
           <div className="unit-header__meta">
             <span className="chip">⏱ {unit.estimatedTime}</span>
-            <span className="chip">🎯 {prettyActivityType(unit.activityType)}</span>
+            <span className="chip">
+              <Icon name="target" size={15} /> {prettyActivityType(unit.activityType)}
+            </span>
             {isCompleted ? (
-              <span className="chip chip--success">✓ Completed</span>
+              <span className="chip chip--success">
+                <Icon name="complete" size={15} /> Completed
+              </span>
             ) : activityResult ? (
               <span className="chip chip--warning">In progress</span>
             ) : (
@@ -224,7 +228,7 @@ export default function UnitPage() {
         </header>
 
         <section className="unit-section">
-          <h2>📺 Video lesson</h2>
+          <h2><Icon name="video" /> Video lesson</h2>
           {(unit.youtubeUrl || unit.videoUrl || unit.youtubeUrlTr) ? (
             <VideoLesson
               youtubeUrl={unit.youtubeUrl}
@@ -237,7 +241,9 @@ export default function UnitPage() {
             />
           ) : (
             <div className="video-coming-soon">
-              <span className="video-coming-soon__icon">🎬</span>
+              <span className="video-coming-soon__icon">
+                  <Icon name="video" size={28} />
+                </span>
               <div>
                 <strong>Video lesson will be added soon.</strong>
                 <p>
@@ -250,14 +256,14 @@ export default function UnitPage() {
 
         {(unit.lessonNotes?.length || unit.transcript) && (
           <section className="unit-section" ref={notesRef} id="lesson-notes">
-            <h2>📖 Lesson notes</h2>
+            <h2><Icon name="notes" /> Lesson notes</h2>
             <LessonNotes notes={unit.lessonNotes} transcript={unit.transcript} />
           </section>
         )}
 
         {materials.length > 0 && (
           <section className="unit-section">
-            <h2>📚 Learning materials</h2>
+            <h2><Icon name="materials" /> Learning materials</h2>
             <p className="muted unit-section__sub">Final learner-facing resources for this unit.</p>
             <div className="materials-grid">
               {materials.map((m, i) => (
@@ -277,7 +283,9 @@ export default function UnitPage() {
         )}
 
         <section className="unit-section" ref={activityRef}>
-          <h2>🧩 Activity — {unit.activityTitle}</h2>
+          <h2>
+            <Icon name="activity" /> Activity — {unit.activityTitle}
+          </h2>
           {unit.activityDescription && <p className="muted">{unit.activityDescription}</p>}
           <div className="activity-wrapper">
             {progressLoaded ? renderActivity() : (
@@ -306,11 +314,11 @@ export default function UnitPage() {
                 onClick={handleMarkComplete}
                 disabled={savingComplete || isCompleted || !canMarkComplete}
               >
-                {isCompleted ? '✓ Completed' : savingComplete ? 'Saving…' : 'Mark as completed'}
+                {isCompleted ? 'Completed' : savingComplete ? 'Saving…' : 'Mark as completed'}
               </button>
               {activityResult && (
                 <button className="btn btn--ghost" onClick={handleTryAgain}>
-                  ↻ Try the activity again
+                  <Icon name="retry" size={16} /> Try the activity again
                 </button>
               )}
               {nextUnit && (

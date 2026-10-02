@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import Icon from '../components/Icon';
 import { Link, useParams } from 'react-router-dom';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
@@ -77,7 +78,9 @@ export default function ModulePage() {
           className="module-header"
           style={{ background: gradient(module.color) }}
         >
-          <div className="module-header__icon">{module.icon}</div>
+          <div className="module-header__icon">
+            <Icon name={module.icon} size={30} />
+          </div>
           <p className="module-header__eyebrow">Module {module.number}</p>
           <h1>{module.title}</h1>
           <p className="module-header__desc">{module.description}</p>
@@ -92,7 +95,7 @@ export default function ModulePage() {
         {!loading && isModuleComplete && (
           <section className="module-complete">
             <span className="module-complete__icon" aria-hidden="true">
-              ✓
+              <Icon name="check" size={16} />
             </span>
             <div className="module-complete__text">
               <h2>Module {module.number} completed</h2>

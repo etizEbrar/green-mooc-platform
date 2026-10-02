@@ -21,7 +21,7 @@ export default function LessonNotes({ notes = [], transcript }) {
       {hasNotes && <NotesBody notes={notes} />}
       {transcript && (
         <details className="lesson-notes__transcript">
-          <summary>📝 Full lesson transcript</summary>
+          <summary>Full lesson transcript</summary>
           {transcript.split(/\n\n+/).map((p, i) => (
             <p key={i}>{p}</p>
           ))}

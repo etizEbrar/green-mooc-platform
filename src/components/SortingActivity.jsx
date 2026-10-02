@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Icon from './Icon';
 
 // One sorting card. User clicks an item, then a category to drop it in.
 // One submit button at the bottom.
@@ -88,7 +89,7 @@ export default function SortingActivity({ unit, step, initialResult, onSubmit })
 
       {selectedItem === null && !submitted && (
         <p className="muted sorting-hint">
-          1️⃣ Click an item — 2️⃣ then click a category to drop it in.
+          Click an item, then click a category to drop it in.
         </p>
       )}
 
@@ -123,7 +124,7 @@ export default function SortingActivity({ unit, step, initialResult, onSubmit })
                           handleClear(i);
                         }}
                       >
-                        ✕
+                        <Icon name="close" size={13} />
                       </span>
                     )}
                   </span>

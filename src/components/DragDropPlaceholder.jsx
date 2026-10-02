@@ -1,3 +1,4 @@
+import Icon from './Icon';
 // Styled placeholder for the drag-and-drop / sorting activity.
 // Replace this with a real implementation (e.g. react-dnd or @dnd-kit/core) when ready.
 export default function DragDropPlaceholder({ unit }) {
@@ -5,7 +6,7 @@ export default function DragDropPlaceholder({ unit }) {
   return (
     <div className="activity activity--dragdrop">
       <div className="dragdrop-banner">
-        <span className="dragdrop-banner__icon">🧲</span>
+        <span className="dragdrop-banner__icon"><Icon name="activity" size={20} /></span>
         <div>
           <h4>Interactive drag-and-drop coming soon</h4>
           <p>
@@ -23,7 +24,7 @@ export default function DragDropPlaceholder({ unit }) {
         ))}
       </div>
       <p className="muted dragdrop-hint">
-        💡 Tip: while waiting for the interactive version, mentally sort these into the right
+        Tip: while waiting for the interactive version, mentally sort these into the right
         groups, then mark the unit as completed.
       </p>
     </div>

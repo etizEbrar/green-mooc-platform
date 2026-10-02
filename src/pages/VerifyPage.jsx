@@ -4,6 +4,7 @@ import { httpsCallable } from 'firebase/functions';
 import { functions } from '../firebase';
 import { project } from '../data/projectData';
 import { formatIssueDate, normaliseCode } from '../lib/certificate';
+import Icon from '../components/Icon';
 
 // Public certificate verification.
 //
@@ -146,7 +147,7 @@ export function VerifyResult({ state, result, code }) {
     return (
       <section className="verify-result verify-result--error" aria-live="polite">
         <span className="verify-result__icon" aria-hidden="true">
-          ⚠️
+          <Icon name="warning" size={30} />
         </span>
         <div>
           <h2>Could not check this code</h2>
@@ -164,7 +165,7 @@ export function VerifyResult({ state, result, code }) {
     return (
       <section className="verify-result verify-result--invalid" aria-live="polite">
         <span className="verify-result__icon" aria-hidden="true">
-          ✕
+          <Icon name="close" size={30} />
         </span>
         <div>
           <h2>No certificate found</h2>
@@ -190,7 +191,7 @@ export function VerifyResult({ state, result, code }) {
   return (
     <section className="verify-result verify-result--valid" aria-live="polite">
       <span className="verify-result__icon" aria-hidden="true">
-        ✓
+        <Icon name="check" size={30} />
       </span>
       <div className="verify-result__body">
         <h2>Certificate verified</h2>

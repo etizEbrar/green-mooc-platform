@@ -1,8 +1,9 @@
+import Icon from './Icon';
 // Material card for any kind of supporting file.
 // Type can be: PDF | DOCX | PPTX | IMAGE | VIDEO | LINK | DOCUMENT.
 // Browsers will display PDFs/IMAGEs inline and offer to download DOCX/PPTX.
 export default function MaterialCard({ title, description, url, type = 'DOCUMENT', onOpen }) {
-  const icon = ICONS[type?.toUpperCase()] || '📄';
+  const icon = ICONS[type?.toUpperCase()] || 'doc';
   return (
     <a
       href={url || '#'}
@@ -18,7 +19,7 @@ export default function MaterialCard({ title, description, url, type = 'DOCUMENT
         onOpen?.();
       }}
     >
-      <span className="material-card__icon">{icon}</span>
+      <span className="material-card__icon"><Icon name={icon} size={20} /></span>
       <div className="material-card__body">
         <h4>{title}</h4>
         {description && <p>{description}</p>}
@@ -30,11 +31,11 @@ export default function MaterialCard({ title, description, url, type = 'DOCUMENT
 }
 
 const ICONS = {
-  PDF: '📄',
-  DOCX: '📝',
-  PPTX: '📊',
-  IMAGE: '🖼️',
-  VIDEO: '🎬',
-  LINK: '🔗',
-  DOCUMENT: '📄'
+  PDF: 'pdf',
+  DOCX: 'doc',
+  PPTX: 'slides',
+  IMAGE: 'image',
+  VIDEO: 'video',
+  LINK: 'link',
+  DOCUMENT: 'doc'
 };

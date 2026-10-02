@@ -1,4 +1,5 @@
 import { project } from '../data/projectData';
+import Icon from './Icon';
 import { certificateVerifyUrl, formatIssueDate } from '../lib/certificate';
 
 // The printable certificate itself. Presentational only — it receives an
@@ -10,9 +11,7 @@ export default function Certificate({ cert, moduleBreakdown }) {
     <article className="certificate" aria-label="Certificate of completion">
       <div className="certificate__border">
         <header className="certificate__head">
-          <span className="certificate__logo" aria-hidden="true">
-            🌿
-          </span>
+          {/* Slot for the CREDIT emblem once the artwork is supplied. */}
           <p className="certificate__programme">{project.programme}</p>
           <p className="certificate__project">
             {project.acronym} — {project.title}
@@ -36,7 +35,7 @@ export default function Certificate({ cert, moduleBreakdown }) {
           <ul className="certificate__modules">
             {completedModules.map(({ module, done, total }) => (
               <li key={module.id}>
-                <span aria-hidden="true">{module.icon}</span> Module {module.number}:{' '}
+                <Icon name={module.icon} size={14} /> Module {module.number}:{' '}
                 {module.title} <em>({done}/{total} units)</em>
               </li>
             ))}

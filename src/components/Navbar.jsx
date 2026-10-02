@@ -1,6 +1,7 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { isAdmin } from '../lib/admins';
+import Icon from './Icon';
 
 export default function Navbar() {
   const { currentUser, loading, logout } = useAuth();
@@ -17,7 +18,7 @@ export default function Navbar() {
     <nav className="navbar no-print">
       <div className="navbar__inner">
         <Link to="/" className="navbar__brand">
-          <span className="navbar__logo">🌿</span>
+          <span className="navbar__logo"><Icon name="module-1" size={26} /></span>
           <span className="navbar__titles">
             <span className="navbar__title">CREDIT MOOC</span>
             <span className="navbar__subtitle">Green &amp; Circular Economy Learning Platform</span>

@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import Icon from '../components/Icon';
 import { Link } from 'react-router-dom';
 import { collection, collectionGroup, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
@@ -177,7 +178,7 @@ export function AnalyticsView({ summary }) {
               {summary.byModule.map((row) => (
                 <tr key={row.id}>
                   <td>
-                    <span aria-hidden="true">{row.icon}</span> {row.title}
+                    <Icon name={row.icon} size={16} /> {row.title}
                   </td>
                   <td>{row.unitCount}</td>
                   <td>{row.completions}</td>
@@ -232,7 +233,7 @@ export function AnalyticsView({ summary }) {
           </table>
         </div>
         <button className="btn btn--ghost" onClick={() => downloadUnitCsv(summary.byUnit)}>
-          ⬇ Export unit data as CSV
+          <Icon name="download" size={16} /> Export unit data as CSV
         </button>
       </section>
     </>

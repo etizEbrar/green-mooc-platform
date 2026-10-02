@@ -66,7 +66,7 @@ export default function ReflectionActivity({ unit, step, initialResult, onSubmit
         </div>
       ) : (
         <div className="activity-result">
-          <h4>📝 Reflection saved</h4>
+          <h4>Reflection saved</h4>
           <p>Your reflection has been saved to your private profile.</p>
           <button className="btn btn--ghost" onClick={() => setSubmitted(false)}>
             Edit my reflection

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Icon from './Icon';
 
 // One case-study card. The story is shown at the top, all questions below.
 // One submit button at the bottom — all answers saved together to Firestore.
@@ -38,7 +39,7 @@ export default function CaseStudyActivity({ unit, step, initialResult, onSubmit 
   return (
     <div className="activity-card activity-card--case">
       <div className="case-block">
-        {cs.title && <h3 className="case-block__title">📌 {cs.title}</h3>}
+        {cs.title && <h3 className="case-block__title">{cs.title}</h3>}
         {cs.story && <p className="case-block__story">{cs.story}</p>}
       </div>
 
@@ -70,7 +71,7 @@ export default function CaseStudyActivity({ unit, step, initialResult, onSubmit 
         </div>
       ) : (
         <div className="activity-result">
-          <h4>💡 Case analysis submitted</h4>
+          <h4>Case analysis submitted</h4>
           <p>Your analysis has been saved to your private profile.</p>
           <button className="btn btn--ghost" onClick={() => setSubmitted(false)}>
             Edit my analysis

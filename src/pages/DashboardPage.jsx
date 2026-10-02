@@ -8,6 +8,7 @@ import LearningSidebar from '../components/LearningSidebar';
 import ModuleCard from '../components/ModuleCard';
 import ProgressBar from '../components/ProgressBar';
 import { CERTIFICATE_THRESHOLD_PERCENT, completionStats } from '../lib/certificate';
+import Icon from '../components/Icon';
 
 export default function DashboardPage() {
   const { currentUser } = useAuth();
@@ -103,7 +104,7 @@ export default function DashboardPage() {
 
         <section className={`cert-banner ${certStats.eligible ? 'is-earned' : ''}`}>
           <span className="cert-banner__icon" aria-hidden="true">
-            {certStats.eligible ? '🏅' : '🎯'}
+            <Icon name={certStats.eligible ? 'certificate' : 'target'} size={26} />
           </span>
           <div className="cert-banner__text">
             <h2>{certStats.eligible ? 'Your certificate is ready' : 'Certificate of completion'}</h2>

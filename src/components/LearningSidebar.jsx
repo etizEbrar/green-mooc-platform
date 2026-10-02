@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import Icon from './Icon';
 import { NavLink, useParams } from 'react-router-dom';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
@@ -74,7 +75,7 @@ export default function LearningSidebar() {
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
       >
-        ☰ Browse course
+        <Icon name="menu" size={16} /> Browse course
       </button>
 
       <aside className={`sidebar ${open ? 'is-open' : ''}`}>
@@ -105,7 +106,7 @@ export default function LearningSidebar() {
                     style={{ background: m.color }}
                     aria-hidden="true"
                   >
-                    {m.icon}
+                    <Icon name={m.icon} size={18} />
                   </span>
                   <span className="sidebar-module__text">
                     <span className="sidebar-module__eyebrow">Module {m.number}</span>
@@ -128,7 +129,7 @@ export default function LearningSidebar() {
                         onClick={() => setOpen(false)}
                         end
                       >
-                        <span className="sidebar-unit__num">★</span>
+                        <span className="sidebar-unit__num"><Icon name="star" size={13} /></span>
                         <span className="sidebar-unit__label">Module overview</span>
                       </NavLink>
                     </li>
@@ -147,7 +148,7 @@ export default function LearningSidebar() {
                             onClick={() => setOpen(false)}
                           >
                             <span className="sidebar-unit__num">
-                              {done ? '✓' : inProgress ? '•' : u.number}
+                              {done ? <Icon name="check" size={13} /> : inProgress ? '•' : u.number}
                             </span>
                             <span className="sidebar-unit__label">{u.title}</span>
                           </NavLink>

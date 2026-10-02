@@ -13,6 +13,7 @@
 //
 // Rendered by UnitPage once an activity result exists.
 import QuizRemediation from './QuizRemediation';
+import Icon from './Icon';
 const SCORED_TYPES = ['multiple-choice', 'matching', 'sorting', 'branching-scenario'];
 
 export default function ActivityFeedback({ unit, result, onReviewTopic }) {
@@ -39,7 +40,7 @@ export default function ActivityFeedback({ unit, result, onReviewTopic }) {
   return (
     <section className="activity-feedback">
       <h3 className="activity-feedback__title">
-        <span aria-hidden="true">🧠</span> Your feedback
+        <Icon name="tip" size={18} /> Your feedback
       </h3>
 
       {isScored ? (
@@ -103,21 +104,21 @@ function scoreBand(score) {
   if (score >= 80) {
     return {
       tone: 'strong',
-      headline: '🎉 Strong result',
+      headline: 'Strong result',
       advice: 'You can move on to the next unit with confidence.'
     };
   }
   if (score >= 60) {
     return {
       tone: 'ok',
-      headline: '👍 Solid, with gaps',
+      headline: 'Solid, with gaps',
       advice:
         'Re-read the explanations on the questions you missed before moving on — those points come back in later units.'
     };
   }
   return {
     tone: 'weak',
-    headline: '💡 Worth another pass',
+    headline: 'Worth another pass',
     advice:
       'Go back over the lesson notes above, then use “Try again”. Repeating the activity is expected, not a failure.'
   };

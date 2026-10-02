@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import Icon from '../components/Icon';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { project, partners, audiences, howItWorks } from '../data/projectData';
@@ -158,7 +159,7 @@ export default function AboutPage() {
           {audiences.map((a) => (
             <article key={a.title} className="audience-card">
               <span className="audience-card__icon" aria-hidden="true">
-                {a.icon}
+                <Icon name={a.icon} size={24} />
               </span>
               <h3>{a.title}</h3>
               <p>{a.body}</p>
@@ -178,7 +179,7 @@ export default function AboutPage() {
               <span className="how-step__num">{s.step}</span>
               <div className="how-step__body">
                 <h3>
-                  <span aria-hidden="true">{s.icon}</span> {s.title}
+                  <Icon name={s.icon} size={18} /> {s.title}
                 </h3>
                 <p>{s.body}</p>
               </div>
@@ -200,7 +201,7 @@ export default function AboutPage() {
               style={{ borderTopColor: m.color }}
             >
               <span className="about-module__icon" aria-hidden="true">
-                {m.icon}
+                <Icon name={m.icon} size={24} />
               </span>
               <p className="about-module__eyebrow">Module {m.number}</p>
               <h3>{m.title}</h3>

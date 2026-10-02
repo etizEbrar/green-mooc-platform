@@ -116,10 +116,10 @@ export default function MultipleChoiceActivity({ unit, step, initialResult, onSu
             <>
               <h4>
                 {result.score >= 70
-                  ? '🎉 Great job!'
+                  ? 'Great job'
                   : result.score >= 40
-                  ? '👍 Good effort!'
-                  : '💡 Keep going!'}
+                  ? 'Good effort'
+                  : 'Keep going'}
               </h4>
               <p>
                 Total score: <strong>{result.score}%</strong> ({result.correct} of {result.total} correct).
@@ -127,7 +127,7 @@ export default function MultipleChoiceActivity({ unit, step, initialResult, onSu
             </>
           ) : (
             <>
-              <h4>📝 Recorded</h4>
+              <h4>Recorded</h4>
               <p>Your selections have been saved. Review the explanations above.</p>
             </>
           )}
@@ -169,7 +169,7 @@ function QuestionBlock({ q, myIdx, selected, submitted, onSelect }) {
       </div>
       {submitted && (q.explanation || q.feedback) && (
         <div className="quiz-question__explanation">
-          <strong>💡 Explanation:</strong>{' '}
+          <strong>Explanation:</strong>{' '}
           {q.explanation || (Array.isArray(q.feedback) ? q.feedback[selected] : q.feedback)}
         </div>
       )}

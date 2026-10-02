@@ -33,7 +33,7 @@ export const modules = [
     description:
       'Understand the core principles of the green and circular economy and why SMEs are at the heart of the sustainability transition.',
     color: '#2f8f6e',
-    icon: '🌱'
+    icon: 'module-1'
   },
   {
     id: 'module-2',
@@ -42,7 +42,7 @@ export const modules = [
     description:
       'Translate sustainability awareness into concrete daily practices, roles, behaviours and a real action plan.',
     color: '#3b82f6',
-    icon: '💼'
+    icon: 'module-2'
   },
   {
     id: 'module-3',
@@ -51,7 +51,7 @@ export const modules = [
     description:
       'Move sustainability from operations to strategy: governance, business model innovation, the SCBMC and EU regulation.',
     color: '#f59e0b',
-    icon: '🧭'
+    icon: 'module-3'
   },
   {
     id: 'module-4',
@@ -60,7 +60,7 @@ export const modules = [
     description:
       'Map where energy, carbon and water are spent in your SME, find quick wins and start tracking with simple indicators.',
     color: '#ef4444',
-    icon: '⚡'
+    icon: 'module-4'
   },
   {
     id: 'module-5',
@@ -69,7 +69,7 @@ export const modules = [
     description:
       'Audit processes, eco-design products, engage suppliers, green logistics, and build circular value-chain partnerships.',
     color: '#8b5cf6',
-    icon: '♻️'
+    icon: 'module-5'
   },
   {
     id: 'module-6',
@@ -78,7 +78,7 @@ export const modules = [
     description:
       'Use the digital tools you already own, recognise nature-related risks, build your first sustainability report and avoid greenwashing.',
     color: '#0ea5e9',
-    icon: '📊'
+    icon: 'module-6'
   }
 ];
 
@@ -649,7 +649,7 @@ export const units = [
     lessonNotes: [
       'Sustainability sits on a spectrum: **operational improvement** (cost-saving) → **strategic integration** (long-term competitive positioning). Most SMEs start operational and gradually move strategic.',
       'Five **strategic drivers** to scan for: market & customer expectations, regulatory developments, stakeholder expectations, cost & resource pressures, risk management.',
-      'Use the **SWOT lens** to interpret sustainability signals: 🟢 Strengths · 🟡 Weaknesses · 🔵 Opportunities · 🔴 Threats.',
+      'Use the **SWOT lens** to interpret sustainability signals: Strengths · Weaknesses · Opportunities · Threats.',
       'The strongest strategic responses are **systemic** (integrate sustainability into business strategy / governance / product portfolio) — not single-issue tactical fixes.',
       'Four strategic profiles: **Operational Response** → **Adaptive Management** → **Strategic Integration** → **Strategic Sustainability Orientation**.'
     ],

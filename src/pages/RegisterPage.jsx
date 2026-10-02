@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import Icon from '../components/Icon';
 
 export default function RegisterPage() {
   const { register } = useAuth();
@@ -38,7 +39,7 @@ export default function RegisterPage() {
     <div className="auth-shell">
       <div className="auth-card">
         <div className="auth-brand">
-          <span className="auth-brand__logo">🌿</span>
+          <span className="auth-brand__logo"><Icon name="module-1" size={34} /></span>
           <h1 className="auth-brand__title">CREDIT MOOC</h1>
           <p className="auth-brand__tagline">Start your sustainability journey</p>
         </div>
@@ -107,9 +108,9 @@ export default function RegisterPage() {
           the sustainability transition.
         </p>
         <ul>
-          <li>✓ Hands-on activities &amp; reflections</li>
-          <li>✓ Self-paced modules</li>
-          <li>✓ Progress saved across devices</li>
+          <li><Icon name="check" size={15} /> Hands-on activities &amp; reflections</li>
+          <li><Icon name="check" size={15} /> Self-paced modules</li>
+          <li><Icon name="check" size={15} /> Progress saved across devices</li>
         </ul>
       </div>
     </div>

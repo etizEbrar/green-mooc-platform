@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Icon from './Icon';
 
 // Click-based matching activity (also used for "drag-drop" content).
 // Props:
@@ -91,7 +92,7 @@ export default function MatchingActivity({ step, unit, initialResult, onSubmit }
 
       {selectedItem === null && !submitted && (
         <p className="matching-hint muted">
-          1️⃣ Click an item below — 2️⃣ then click a category to assign it.
+          Click an item below, then click a category to assign it.
         </p>
       )}
 
@@ -126,7 +127,7 @@ export default function MatchingActivity({ step, unit, initialResult, onSubmit }
                           handleClear(i);
                         }}
                       >
-                        ✕
+                        <Icon name="close" size={13} />
                       </span>
                     )}
                   </span>
@@ -136,7 +137,9 @@ export default function MatchingActivity({ step, unit, initialResult, onSubmit }
                 <p className="matching-item__feedback">
                   {it.category ? (
                     <>
-                      <strong>{isCorrect ? '✓' : '✗'}</strong> Correct category: <strong>{it.category}</strong>.
+                      <strong>
+                    <Icon name={isCorrect ? 'check' : 'close'} size={14} />
+                  </strong> Correct category: <strong>{it.category}</strong>.
                       {it.feedback ? ` ${it.feedback}` : ''}
                     </>
                   ) : (

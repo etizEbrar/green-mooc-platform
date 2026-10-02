@@ -10,6 +10,7 @@
 // If neither URL is present, the component returns null — the parent (UnitPage)
 // is expected to render the "video coming soon" card instead.
 import { useEffect, useRef, useState } from 'react';
+import Icon from './Icon';
 
 // `onEngage` is called at most once per mount, the first time the learner
 // interacts with the player. YouTube embeds do not expose playback events
@@ -82,7 +83,7 @@ function LocalVideo({ videoUrl, title, onEngage }) {
     return (
       <div className="video-lesson">
         <div className="video-warning">
-          <span className="video-warning__icon">⚠️</span>
+          <span className="video-warning__icon"><Icon name="warning" size={20} /></span>
           <div>
             <strong>Video temporarily unavailable</strong>
             <p>

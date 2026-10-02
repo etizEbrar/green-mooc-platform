@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import Icon from '../components/Icon';
 import { Link } from 'react-router-dom';
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
 import { httpsCallable } from 'firebase/functions';
@@ -189,7 +190,7 @@ export default function CertificatePage() {
                   className={`cert-module ${done === total ? 'is-done' : ''}`}
                 >
                   <span className="cert-module__icon" style={{ background: module.color }}>
-                    {module.icon}
+                    <Icon name={module.icon} size={18} />
                   </span>
                   <span className="cert-module__text">
                     <strong>Module {module.number}</strong>
@@ -197,7 +198,9 @@ export default function CertificatePage() {
                       {done}/{total} units
                     </span>
                   </span>
-                  <span className="cert-module__check">{done === total ? '✓' : '→'}</span>
+                  <span className="cert-module__check">
+                      <Icon name={done === total ? 'check' : 'chevron'} size={15} />
+                    </span>
                 </Link>
               ))}
             </div>
@@ -206,7 +209,9 @@ export default function CertificatePage() {
 
         {stats.eligible && !certificate && (
           <section className="cert-issue no-print">
-            <h2>🎉 You have earned your certificate</h2>
+            <h2>
+              <Icon name="celebrate" size={22} /> You have earned your certificate
+            </h2>
             <p className="muted">
               Check the name below — it is printed exactly as written on your certificate.
             </p>
@@ -230,10 +235,10 @@ export default function CertificatePage() {
           <>
             <div className="cert-actions no-print">
               <button className="btn btn--primary" onClick={handleDownload} disabled={downloading}>
-                {downloading ? 'Building your PDF…' : '⬇ Download certificate (PDF)'}
+                {downloading ? 'Building your PDF…' : 'Download certificate (PDF)'}
               </button>
               <button className="btn btn--ghost" onClick={() => window.print()}>
-                🖨 Print
+                <Icon name="printer" size={16} /> Print
               </button>
               <p className="muted cert-actions__hint">
                 The PDF is generated in your browser — nothing is uploaded. Verification code{' '}

@@ -5,6 +5,7 @@ import ReflectionActivity from './ReflectionActivity';
 import MatchingActivity from './MatchingActivity';
 import ActionPlanActivity from './ActionPlanActivity';
 import BranchingScenarioActivity from './BranchingScenarioActivity';
+import Icon from './Icon';
 
 // Composes a sequence of sub-activities into one paged "multi-step" activity.
 // Each sub-step's result is collected into a `stepResults` array and persisted
@@ -81,7 +82,7 @@ export default function MultiStepActivity({ unit, initialResult, onSubmit }) {
                 className="multi-step__nav-btn"
                 onClick={() => setActiveIdx(i)}
               >
-                <span className="multi-step__nav-num">{done ? '✓' : i + 1}</span>
+                <span className="multi-step__nav-num">{done ? <Icon name="check" size={13} /> : i + 1}</span>
                 <span className="multi-step__nav-title">{s.title || stepKindLabel(s.kind)}</span>
               </button>
             </li>
@@ -205,7 +206,9 @@ function IntroStep({ step, initialResult, onSubmit }) {
           Got it — continue
         </button>
       ) : (
-        <p className="muted">✓ Read.</p>
+        <p className="muted">
+            <Icon name="check" size={14} /> Read.
+          </p>
       )}
     </div>
   );

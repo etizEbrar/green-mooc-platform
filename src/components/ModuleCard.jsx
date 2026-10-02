@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import ProgressBar from './ProgressBar';
+import Icon from './Icon';
 
 export default function ModuleCard({ module, completed = 0, total = 0 }) {
   const percent = total ? Math.round((completed / total) * 100) : 0;
@@ -16,7 +17,9 @@ export default function ModuleCard({ module, completed = 0, total = 0 }) {
         className="module-card__top"
         style={{ background: `linear-gradient(135deg, ${module.color}, ${module.color}cc)` }}
       >
-        <span className="module-card__icon">{module.icon}</span>
+        <span className="module-card__icon">
+          <Icon name={module.id} size={30} />
+        </span>
         <span className={`badge ${statusModifier}`}>{status}</span>
       </div>
       <div className="module-card__body">

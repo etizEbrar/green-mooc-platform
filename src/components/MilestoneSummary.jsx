@@ -1,4 +1,5 @@
 import { CERTIFICATE_THRESHOLD_PERCENT } from '../lib/certificate';
+import Icon from './Icon';
 
 // Administrative summary of learner milestones (PA6 action 15).
 //
@@ -68,7 +69,7 @@ export default function MilestoneSummary({ summary }) {
               {funnel.map((f) => (
                 <li key={f.id} className="funnel__row">
                   <span className="funnel__label">
-                    <span aria-hidden="true">{f.icon}</span> Module {f.number}
+                    <Icon name={f.icon} size={16} /> Module {f.number}
                   </span>
                   <span className="funnel__bar-track">
                     <span

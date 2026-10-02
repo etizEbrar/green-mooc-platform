@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Icon from './Icon';
 
 // Single-card action plan. One submit, one saved object.
 //
@@ -76,7 +77,9 @@ export default function ActionPlanActivity({ unit, step, initialResult, onSubmit
         </div>
       ) : (
         <div className="activity-result">
-          <h4>📋 Action plan saved</h4>
+          <h4>
+            <Icon name="recorded" size={18} /> Action plan saved
+          </h4>
           <p>Your plan has been saved to your private profile. Keep it visible — review it weekly until each action is in motion.</p>
           <button className="btn btn--ghost" onClick={() => setSubmitted(false)}>
             Edit my plan

@@ -1,24 +1,27 @@
 import { Link } from 'react-router-dom';
+import Icon from './Icon';
 
 export default function UnitCard({ unit, progress, accent = '#2f8f6e' }) {
   const status = progress?.completed
-    ? { label: 'Completed', cls: 'badge--success', icon: '✓' }
+    ? { label: 'Completed', cls: 'badge--success', icon: 'check' }
     : progress?.activityCompleted
-    ? { label: 'In progress', cls: 'badge--warning', icon: '⏳' }
-    : { label: 'Not started', cls: 'badge--muted', icon: '○' };
+    ? { label: 'In progress', cls: 'badge--warning', icon: 'clock' }
+    : { label: 'Not started', cls: 'badge--muted', icon: 'incomplete' };
 
   return (
     <article className="unit-card" style={{ '--accent': accent }}>
       <div className="unit-card__head">
         <span className="unit-card__number">{unit.number}</span>
         <span className={`badge ${status.cls}`}>
-          {status.icon} {status.label}
+          <Icon name={status.icon} size={13} /> {status.label}
         </span>
       </div>
       <h3 className="unit-card__title">{unit.title}</h3>
       <p className="unit-card__desc">{unit.description}</p>
       <div className="unit-card__meta">
-        <span>⏱ {unit.estimatedTime}</span>
+        <span>
+          <Icon name="clock" size={14} /> {unit.estimatedTime}
+        </span>
         <span>· {prettyType(unit.activityType)}</span>
       </div>
       <Link

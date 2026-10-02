@@ -1,4 +1,5 @@
 import { firebaseConfig } from '../firebase';
+import Icon from './Icon';
 
 const PLACEHOLDERS = [
   'YOUR_API_KEY',
@@ -19,7 +20,7 @@ export default function FirebaseWarning() {
   return (
     <div className="firebase-warning" role="alert">
       <div className="firebase-warning__inner">
-        <span className="firebase-warning__icon">⚠️</span>
+        <span className="firebase-warning__icon"><Icon name="warning" size={20} /></span>
         <div>
           <strong>Firebase not configured</strong>
           <p>

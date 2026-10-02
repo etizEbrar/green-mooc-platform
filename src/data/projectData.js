@@ -46,22 +46,22 @@ export const partners = [
 // able to recognise themselves in one of these lines within a few seconds.
 export const audiences = [
   {
-    icon: '🏭',
+    icon: 'factory',
     title: 'Owners of small & micro-enterprises',
     body: 'You run a business with limited time and budget, and you need sustainability steps that pay for themselves rather than a corporate strategy deck.'
   },
   {
-    icon: '👷',
+    icon: 'worker',
     title: 'Employees and team leads in SMEs',
     body: 'You want to turn a general wish to “be greener” into specific changes in the processes you already control.'
   },
   {
-    icon: '🎓',
+    icon: 'course',
     title: 'Trainers, mentors and advisors',
     body: 'You support SMEs and want ready-made lessons, infographics and activities you can reuse with your own groups.'
   },
   {
-    icon: '🌍',
+    icon: 'globe',
     title: 'Adult education & support organisations',
     body: 'You work in adult education, a business network, a public authority or an NGO and need an open, free curriculum on the green and circular economy.'
   }
@@ -71,25 +71,25 @@ export const audiences = [
 export const howItWorks = [
   {
     step: 1,
-    icon: '📝',
+    icon: 'notes',
     title: 'Create a free account',
     body: 'Registration takes a minute and exists only so the platform can remember where you stopped and issue your certificate. The whole course is free.'
   },
   {
     step: 2,
-    icon: '🧭',
+    icon: 'compass',
     title: 'Work through the modules',
     body: 'Six modules, thirty short units. Take them in order or jump to the topic you need today — nothing is locked.'
   },
   {
     step: 3,
-    icon: '🎬',
+    icon: 'video',
     title: 'Follow the unit sequence',
     body: 'Each unit gives you a video lesson, written lesson notes, the supporting material and infographic, and one hands-on activity applied to your own organisation.'
   },
   {
     step: 4,
-    icon: '🏅',
+    icon: 'certificate',
     title: 'Earn your certificate',
     body: 'Your progress saves automatically. Complete at least 75% of the course — a minimum of 23 of the 30 units — and you can download a certificate of completion.'
   }

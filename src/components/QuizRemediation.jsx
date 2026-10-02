@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { flattenQuizQuestions, gradeAnswers, feedbackFor } from '../lib/quiz';
+import Icon from './Icon';
 
 // Post-quiz remediation (PA6 action 16).
 //
@@ -106,7 +107,7 @@ function RemediationCard({ graded, unit, onReviewTopic }) {
     <article className={`remediation-card ${correct ? 'is-correct' : 'is-wrong'}`}>
       <header className="remediation-card__head">
         <span className="remediation-card__badge" aria-hidden="true">
-          {correct ? '✓' : '✕'}
+          <Icon name={correct ? 'check' : 'close'} size={14} />
         </span>
         <p className="remediation-card__question">
           <span className="sr-only">{correct ? 'Correct. ' : 'Incorrect. '}</span>

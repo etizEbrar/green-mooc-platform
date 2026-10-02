@@ -1,4 +1,5 @@
 import { project } from '../data/projectData';
+import Icon from './Icon';
 import {
   pilots,
   publishedPilots,
@@ -109,7 +110,7 @@ function PilotCard({ pilot }) {
             ))
           : Array.from({ length: PHOTO_PLACEHOLDER_COUNT }).map((_, i) => (
               <div key={i} className="pilot-photo pilot-photo--placeholder" aria-hidden="true">
-                <span>📷</span>
+                <Icon name="image" size={16} />
               </div>
             ))}
       </div>
@@ -137,7 +138,7 @@ function PilotCard({ pilot }) {
         </dl>
       ) : (
         <p className="pilot-card__pending">
-          <span aria-hidden="true">🕗</span> {pilot.partner} is finalising the methodology, impact
+          <Icon name="clock" size={15} /> {pilot.partner} is finalising the methodology, impact
           and engagement figures for the {pilot.country} pilot. They will be published here.
         </p>
       )}
