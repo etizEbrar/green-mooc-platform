@@ -23,22 +23,21 @@ export const partners = [
     role: 'Coordinator',
     country: 'Greece',
     flag: '🇬🇷',
-    // TODO: replace with each partner's own website once confirmed.
-    url: 'https://erasmuscredit.eu'
+    url: 'https://www.siseragreece.com'
   },
   {
     name: 'Officine Europa APS',
     role: 'Partner',
     country: 'Italy',
     flag: '🇮🇹',
-    url: 'https://erasmuscredit.eu'
+    url: 'https://www.officineuropa.eu'
   },
   {
     name: 'Akdeniz Panorama Derneği',
     role: 'Partner',
     country: 'Türkiye',
     flag: '🇹🇷',
-    url: 'https://erasmuscredit.eu'
+    url: 'https://mediterraneanpanorama.org'
   }
 ];
 
