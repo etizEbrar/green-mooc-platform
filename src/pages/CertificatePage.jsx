@@ -247,7 +247,7 @@ export default function CertificatePage() {
             </div>
 
             {/* On-page copy: responsive, for reading and for printing. */}
-            <Certificate cert={certificate} moduleBreakdown={moduleBreakdown} />
+            <Certificate cert={certificate} />
 
             {/* Off-screen copy at a fixed A4-landscape width. This is the node
                 html2canvas captures, so the PDF looks the same on every device.
@@ -255,7 +255,7 @@ export default function CertificatePage() {
                 nothing to measure — so it is parked outside the viewport. */}
             <div className="certificate-capture" aria-hidden="true">
               <div ref={captureRef} className="certificate-capture__inner">
-                <Certificate cert={certificate} moduleBreakdown={moduleBreakdown} />
+                <Certificate cert={certificate} />
               </div>
             </div>
           </>
