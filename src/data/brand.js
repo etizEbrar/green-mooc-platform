@@ -24,6 +24,8 @@ export const brand = {
     // dark backgrounds; it would vanish on the certificate. Awaiting a
     // dark-text version.
     { name: 'Officine Europa APS', src: asset(null) },
+    // 201x58, taken from mediterraneanpanorama.org: sharp on screen, too
+    // small for print. Replace with a partner-supplied file.
     { name: 'Akdeniz Panorama Derneği', src: asset('partner-akdeniz-panorama.jpg') }
   ]
 };
