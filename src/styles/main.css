@@ -3620,3 +3620,44 @@ a.module-card:focus-visible {
 .activity-feedback__band--ok      { background: #fffbeb; border: 1px solid #fde68a; }
 .activity-feedback__band--weak    { background: #fef2f2; border: 1px solid #fecaca; }
 .activity-feedback__band--neutral { background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); }
+
+/* ----- Footer logo band (EU identity + partners) ----- */
+.app-footer__logos {
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+  padding: 1rem 1.5rem;
+  background: #fff;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.25rem 2.25rem;
+}
+.app-footer__logos img { height: 40px; width: auto; max-width: 180px; object-fit: contain; }
+.app-footer__logos .app-footer__eu { height: 44px; max-width: 220px; }
+
+/* ----- Certificate: issuing statement ----- */
+.certificate__issuer {
+  margin: 0.5rem 0 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--cert-green);
+}
+
+/* ----- "Certificate unlocked" notice on the unit page ----- */
+.cert-unlocked {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.85rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-sm);
+  background: #fdf7e6;
+  border: 1px solid #e8d9ad;
+  color: #5a4613;
+}
+.cert-unlocked span { flex: 1; min-width: 220px; }
+.cert-unlocked .icon { color: #b08d3c; }

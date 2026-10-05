@@ -107,7 +107,7 @@ export default function DashboardPage() {
             <Icon name={certStats.eligible ? 'certificate' : 'target'} size={26} />
           </span>
           <div className="cert-banner__text">
-            <h2>{certStats.eligible ? 'Your certificate is ready' : 'Certificate of completion'}</h2>
+            <h2>{certStats.eligible ? 'Certificate unlocked' : 'Certificate of completion'}</h2>
             <p className="muted">
               {certStats.eligible
                 ? `You have completed ${certStats.percent}% of the course — above the ${CERTIFICATE_THRESHOLD_PERCENT}% requirement.`

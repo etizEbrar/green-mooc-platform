@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
-import { getModule, getUnit, getUnitsForModule } from '../data/courseData';
+import { getModule, getUnit, getUnitsForModule, units as allUnits } from '../data/courseData';
+import { completionStats } from '../lib/certificate';
 import LearningSidebar from '../components/LearningSidebar';
 import LessonNotes from '../components/LessonNotes';
 import VideoLesson from '../components/VideoLesson';
@@ -41,6 +42,7 @@ export default function UnitPage() {
   const [activityResult, setActivityResult] = useState(null);
   const [savingComplete, setSavingComplete] = useState(false);
   const [feedback, setFeedback] = useState('');
+  const [certUnlocked, setCertUnlocked] = useState(false);
   const [progressLoaded, setProgressLoaded] = useState(false);
   // Bumping this remounts the activity with no initial result, which is the
   // only reliable reset given each activity owns its own submitted state.
@@ -65,6 +67,7 @@ export default function UnitPage() {
     setActivityResult(null);
     setProgress(null);
     setFeedback('');
+    setCertUnlocked(false);
     setProgressLoaded(false);
     (async () => {
       try {
@@ -140,6 +143,7 @@ export default function UnitPage() {
     if (!currentUser) return;
     setSavingComplete(true);
     setFeedback('');
+    const wasCompleted = !!progress?.completed;
     try {
       const ref = doc(db, 'users', currentUser.uid, 'progress', unit.id);
       await setDoc(
@@ -159,6 +163,20 @@ export default function UnitPage() {
       setProgress((p) => ({ ...(p || {}), completed: true }));
       trackUnitComplete(currentUser.uid, module.id, unit.id);
       setFeedback('Unit marked as completed. Your progress has been saved.');
+
+      // Tell the learner the moment this unit takes them over the certificate
+      // threshold — not on every later unit, and never on a re-completion.
+      if (!wasCompleted) {
+        try {
+          const snap = await getDocs(collection(db, 'users', currentUser.uid, 'progress'));
+          const map = {};
+          snap.forEach((d) => (map[d.id] = d.data()));
+          const after = completionStats(map, allUnits.length);
+          if (after.eligible && after.completedCount - 1 < after.requiredUnits) setCertUnlocked(true);
+        } catch {
+          // The notice is a courtesy; the dashboard shows eligibility anyway.
+        }
+      }
     } catch (err) {
       console.error(err);
       setFeedback('Could not save progress. Please check your connection and try again.');
@@ -307,6 +325,18 @@ export default function UnitPage() {
               <h3>{isCompleted ? 'Unit completed' : 'Ready to wrap up?'}</h3>
               <p className="muted">{completionGateMessage()}</p>
               {feedback && <p className="feedback">{feedback}</p>}
+              {certUnlocked && (
+                <div className="cert-unlocked" role="status">
+                  <Icon name="certificate" size={20} />
+                  <span>
+                    <strong>Certificate unlocked.</strong> You have completed enough of the course to
+                    receive your certificate.
+                  </span>
+                  <Link className="btn btn--primary" to="/certificate">
+                    Get my certificate
+                  </Link>
+                </div>
+              )}
             </div>
             <div className="complete-card__actions">
               <button

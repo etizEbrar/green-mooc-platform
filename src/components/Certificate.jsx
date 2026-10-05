@@ -48,6 +48,9 @@ export default function Certificate({ cert }) {
             meeting the {cert.thresholdPercent}% completion requirement set by the{' '}
             {project.acronym} consortium.
           </p>
+          <p className="certificate__issuer">
+            Issued by the {project.acronym} Consortium – Coordinated by S.I.S.E.R.A. Greece
+          </p>
         </div>
 
         <div className="certificate__sign-row">

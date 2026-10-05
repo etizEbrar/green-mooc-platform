@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { project, partners } from '../data/projectData';
+import { brand } from '../data/brand';
 
 // Footer shown on every page. It carries the two things the consortium asked
 // for on every screen: a visible link back to the CREDIT project website, and
@@ -7,6 +8,19 @@ import { project, partners } from '../data/projectData';
 export default function SiteFooter() {
   return (
     <footer className="app-footer no-print">
+      {/* EU funding identity and partner logos, on white as the EU visual
+          identity guidelines expect. Logos not yet supplied are left out. */}
+      <div className="app-footer__logos">
+        {brand.projectLogo && <img src={brand.projectLogo} alt={project.acronym} />}
+        {brand.euEmblem && (
+          <img className="app-footer__eu" src={brand.euEmblem} alt="Co-funded by the European Union" />
+        )}
+        {brand.partners
+          .filter((p) => p.src)
+          .map((p) => (
+            <img key={p.name} src={p.src} alt={p.name} title={p.name} />
+          ))}
+      </div>
       <div className="app-footer__inner">
         <div className="app-footer__col">
           <p className="app-footer__brand">CREDIT MOOC</p>

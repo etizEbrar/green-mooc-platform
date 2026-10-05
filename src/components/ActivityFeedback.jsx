@@ -40,7 +40,7 @@ export default function ActivityFeedback({ unit, result, onReviewTopic }) {
   return (
     <section className="activity-feedback">
       <h3 className="activity-feedback__title">
-        <Icon name="tip" size={18} /> Your feedback
+        <Icon name="tip" size={18} /> Your Results &amp; Review
       </h3>
 
       {isScored ? (
