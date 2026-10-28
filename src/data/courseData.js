@@ -1602,8 +1602,8 @@ export const units = [
       'Map one of your existing digital tools to a sustainability use — using what you already own, not buying new software.',
     estimatedTime: '20–25 min',
     videoUrl: null,
-    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
-    videoStatus: 'coming-soon',
+    youtubeUrl: "https://youtu.be/KgWPKRPHlDM",
+    videoStatus: 'available',
     materials: [],
     lessonNotes: [
       'Most SMEs **already own enough digital tools** for sustainability monitoring — Excel, accounting software, communication platforms, project apps. The barrier is wiring them to sustainability needs.',
@@ -1635,8 +1635,8 @@ export const units = [
       'A reflection on how SMEs can responsibly use AI and data to support sustainability decisions. Source materials are still being finalised by the CREDIT consortium.',
     estimatedTime: '15–20 min',
     videoUrl: null,
-    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
-    videoStatus: 'coming-soon',
+    youtubeUrl: "https://youtu.be/8AWV2on8zvA",
+    videoStatus: 'available',
     materials: [],
     lessonNotes: [
       '**This unit’s full source materials are still being finalised by the CREDIT consortium.** The reflection prompts below let you start thinking about responsible AI/data use until the full content is published.',
@@ -1665,8 +1665,8 @@ export const units = [
       'A reflection that audits your "invisible" dependencies on nature — even office businesses depend on natural systems.',
     estimatedTime: '20–25 min',
     videoUrl: null,
-    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
-    videoStatus: 'coming-soon',
+    youtubeUrl: "https://youtu.be/VqmGDDHK_MM",
+    videoStatus: 'available',
     materials: [],
     lessonNotes: [
       'Even "indoor" office businesses depend on natural systems: energy from a grid, water for sanitation, food for staff, materials extracted from forests and mines.',
@@ -1697,8 +1697,8 @@ export const units = [
       'Build the structure of your first one-page sustainability report — short summary, 3–5 key indicators, and 2–3 main messages.',
     estimatedTime: '25–30 min',
     videoUrl: null,
-    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
-    videoStatus: 'coming-soon',
+    youtubeUrl: "https://youtu.be/LQlO655-5rQ",
+    videoStatus: 'available',
     materials: [],
     lessonNotes: [
       'Most SMEs **already have more sustainability data than they realise** — energy bills, employee data, supplier lists, operational records — just scattered across functions.',
@@ -1731,8 +1731,8 @@ export const units = [
       'Rewrite three classic vague claims using the CLEAR + SPECIFIC + EVIDENCE test, then your own current claim.',
     estimatedTime: '20–25 min',
     videoUrl: null,
-    youtubeUrl: null, // PASTE_YOUTUBE_LINK_HERE — unlisted YouTube URL
-    videoStatus: 'coming-soon',
+    youtubeUrl: "https://youtu.be/k10I9JqYU6Q",
+    videoStatus: 'available',
     materials: [],
     lessonNotes: [
       'Most organisations communicate **more sustainability claims than they realise** — every "eco-friendly", "green", "natural" on packaging, website or sales materials counts.',
