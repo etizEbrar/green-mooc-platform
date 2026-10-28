@@ -1602,7 +1602,7 @@ export const units = [
       'Map one of your existing digital tools to a sustainability use — using what you already own, not buying new software.',
     estimatedTime: '20–25 min',
     videoUrl: null,
-    youtubeUrl: "https://youtu.be/KgWPKRPHlDM",
+    youtubeUrl: "https://youtu.be/8AWV2on8zvA",
     videoStatus: 'available',
     materials: [],
     lessonNotes: [
@@ -1635,7 +1635,7 @@ export const units = [
       'A reflection on how SMEs can responsibly use AI and data to support sustainability decisions. Source materials are still being finalised by the CREDIT consortium.',
     estimatedTime: '15–20 min',
     videoUrl: null,
-    youtubeUrl: "https://youtu.be/8AWV2on8zvA",
+    youtubeUrl: "https://youtu.be/KgWPKRPHlDM",
     videoStatus: 'available',
     materials: [],
     lessonNotes: [
@@ -1665,7 +1665,7 @@ export const units = [
       'A reflection that audits your "invisible" dependencies on nature — even office businesses depend on natural systems.',
     estimatedTime: '20–25 min',
     videoUrl: null,
-    youtubeUrl: "https://youtu.be/VqmGDDHK_MM",
+    youtubeUrl: "https://youtu.be/LQlO655-5rQ",
     videoStatus: 'available',
     materials: [],
     lessonNotes: [
@@ -1697,7 +1697,7 @@ export const units = [
       'Build the structure of your first one-page sustainability report — short summary, 3–5 key indicators, and 2–3 main messages.',
     estimatedTime: '25–30 min',
     videoUrl: null,
-    youtubeUrl: "https://youtu.be/LQlO655-5rQ",
+    youtubeUrl: "https://youtu.be/VqmGDDHK_MM",
     videoStatus: 'available',
     materials: [],
     lessonNotes: [
