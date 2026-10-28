@@ -1630,9 +1630,9 @@ export const units = [
     id: '6.2',
     moduleId: 'module-6',
     number: '6.2',
-    title: 'AI, Data and Innovation for Sustainable SMEs',
+    title: 'Applying Digital Tools for Sustainability in SMEs',
     description:
-      'A reflection on how SMEs can responsibly use AI and data to support sustainability decisions. Source materials are still being finalised by the CREDIT consortium.',
+      'How SMEs can put everyday digital tools to work for sustainability: monitoring and tracking performance, overcoming limited time, resources and skills, and using data to cut waste and support better decisions.',
     estimatedTime: '15–20 min',
     videoUrl: null,
     youtubeUrl: "https://youtu.be/KgWPKRPHlDM",
