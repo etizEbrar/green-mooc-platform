@@ -1,11 +1,15 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import Icon from '../components/Icon';
 
 export default function LoginPage() {
   const { login, resetPassword } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  // Return to the page that sent the learner here (e.g. a module card on the
+  // landing page), not always to the dashboard.
+  const from = location.state?.from?.pathname || '/dashboard';
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -37,7 +41,7 @@ export default function LoginPage() {
     setSubmitting(true);
     try {
       await login(email, password);
-      navigate('/dashboard');
+      navigate(from, { replace: true });
     } catch (err) {
       setError(prettifyAuthError(err));
     } finally {

@@ -195,8 +195,9 @@ export default function AboutPage() {
         </div>
         <div className="grid grid--about-modules">
           {modules.map((m) => (
-            <article
+            <Link
               key={m.id}
+              to={`/modules/${m.id}`}
               className="about-module"
               style={{ borderTopColor: m.color }}
             >
@@ -206,7 +207,8 @@ export default function AboutPage() {
               <p className="about-module__eyebrow">Module {m.number}</p>
               <h3>{m.title}</h3>
               <p className="about-module__desc">{m.description}</p>
-            </article>
+              <span className="about-module__cta">Open module →</span>
+            </Link>
           ))}
         </div>
       </section>
