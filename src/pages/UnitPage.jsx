@@ -18,6 +18,7 @@ import MatchingActivity from '../components/MatchingActivity';
 import SortingActivity from '../components/SortingActivity';
 import BranchingScenarioActivity from '../components/BranchingScenarioActivity';
 import ActivityFeedback from '../components/ActivityFeedback';
+import Icon from '../components/Icon';
 import useTimeOnUnit from '../hooks/useTimeOnUnit';
 import { recordUnitVisit, recordInteraction } from '../lib/engagement';
 import { trackUnitComplete, trackQuizAttempt } from '../lib/milestones';
